@@ -11,8 +11,8 @@ const moocscards = [
   },
   {
     title: "Cryptography",
-    cardImage: "assets/images/education-page/aws.pdf",
-    moocLink: "https://graduation.udacity.com/api/graduation/certificate/SKDETREW/download",
+    cardImage: "assets/images/education-page/udemy.svg",
+    moocLink: "https://www.udemy.com/course/cryptography-for-beginners/",
   },
   {
     title: "Machine Learning",
