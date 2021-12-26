@@ -9,22 +9,23 @@ const exp = [
     place: "Senior Software Developer",
     cardImage: "assets/images/experience-page/ltts.jpg",
     title: "L&T Technology Services",
-    time: "(Feb, 2021 - present)",
+    time: "(Feb 2021 - present)",
     desp: "<li>Developing Intel Core framework for validating server platform </li> <li>Implementing AI as features in the latest Intel processors</li> <li>Responsible for end to end software develoment life cycle in the project </li>",
   },
   {
     place: "Data Scientist",
     cardImage: "assets/images/experience-page/ericsson.png",
-    title: "Ericsson",
-    time: "(Oct,2019 - Jan,2021)",
-    desp: "<li>Worked with MOZILLA as a part of Google Summer Of Code.</li><li>Worked on Extension Activity Monitor which is a privileged extension for Firefox that uses the activityLog API (privileged API) to monitor the activities of the other installed extensions.</li><li>The activityLog API listens for logs from other installed extensions.</li>",
+    title: "Ericsson India Global Services Pvt. Ltd.",
+    time: "(Oct 2019 - Jan 2021)",
+    desp: "<li>Time Series Forcasting with ARIMA | BMAS</li><li>Field Revisit Prediction - Naive Bayes Theorem </li><li>The activityLog API listens for logs from other installed extensions.</li>",
+  
   },
   {
     place: "Engineer",
     cardImage: "assets/images/experience-page/ericsson_1.jpg",
-    title: "Ericsson",
-    time: "(Feb,2018, - Oct,2019)",
-    desp:"<li>Worked on the project “LTI (Learning Tools Interoperability) 2.0 standards Implementation for ekShiksha.</li><li>Designed a software that would help faculty to create a quiz using the questions from the database based on his/her choice of topics and he should be provided with various facilities and options to create a quiz of his choice.</li>",
+    title: "Ericsson India Global Services Pvt. Ltd.",
+    time: "(Feb 2018, - Oct 2019)",
+    desp:"<li>CIQ Automation | SPRINT C & I </li><li>Web Scraping Using Selenium in Python</li><li>Outlook and PPT automation, KPI data visualization | AT & T</li>",
   },
 ];
 
