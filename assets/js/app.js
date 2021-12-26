@@ -103,6 +103,8 @@ let header = $(`
 </div>
 </nav>`);
 
+
+
 // Footer
 
 let footer = $(`
@@ -145,8 +147,6 @@ let footer = $(`
         </div>
     </div>
 
-
-    
 
     <div class="rounded-social-buttons tag">
     <a class="social-button twitter" href="#" target="_blank">
