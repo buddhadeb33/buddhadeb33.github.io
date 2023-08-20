@@ -6,10 +6,17 @@ AOS.init();
 const experiencecards = document.querySelector(".experience-cards");
 const exp = [
   {
+    place: "Lead Data Scientist-NW(AI/ML)",
+    cardImage: "assets/images/experience-page/airtel.png",
+    title: "Bharti Airtel",
+    time: "(May 2022 - present)",
+    desp: "<li>Creating the Best Telco AI Algorithm to solve most challenging network and broadband related problems </li> <li>Implementing ML DL in various part of the project to create best solution</li> <li>Using the powehouse of deep learning functioning in Wireline Autoplanning in PAN India </li>",
+  },
+  {
     place: "Senior Software Developer",
-    cardImage: "assets/images/experience-page/ltts.jpg",
+    cardImage: "assets/images/experience-page/ltts.png",
     title: "L&T Technology Services",
-    time: "(Feb 2021 - present)",
+    time: "(Feb 2021 - May 2022)",
     desp: "<li>Developing Intel Core framework for validating server platform </li> <li>Implementing AI as features in the latest Intel processors</li> <li>Responsible for end to end software develoment life cycle in the project </li>",
   },
   {
@@ -97,7 +104,7 @@ const showCards = () => {
       (output += `        
       <div class="card volunteerCard" data-aos="fade-down" data-aos-easing="linear" data-aos-delay="100" data-aos-duration="600" style="height: 550px;width:400px">
       
-      <img src="${cardImage}" height="250" width="65" class="card-img" style="border-radius:10px">
+      <img src="${cardImage}" height="200" width="auto" class="card-img" style="border-radius:10px">
       <div class="content">
           <h2 class="volunteerTitle">${title}</h2><br>
           <p class="copy">${description}</p></div>

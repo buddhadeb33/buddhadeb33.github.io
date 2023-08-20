@@ -230,7 +230,7 @@ html {
 
 .navbar-brand {
     font-family: Agustina;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
 }
 
@@ -1094,3 +1094,6 @@ overflow: visible; }
 
 .js .animate-box {
     opacity: 0; }
+
+
+
