@@ -8,7 +8,7 @@ const projectcards = document.querySelector(".projectcards");
 const projects = [
   {
     title: "Real or Not? NLP with Disaster Tweets",
-    cardImage: "assets/images/project-page/tweet.gif",
+    cardImage: "assets/images/project-page/tweet_optimized.mp4",
     description: "A quiz app built using basic react.",
     tagimg: "https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png",
     Previewlink: "",
@@ -24,7 +24,7 @@ const projects = [
   },
   {
     title: "AI-Speech-Emotion-Recognition",
-    cardImage: "assets/images/project-page/emotion.gif",
+    cardImage: "assets/images/project-page/emotion_optimized.mp4",
     description: "Flappy bird game built using React.js",
     tagimg: "https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png",
     Previewlink: "",
@@ -32,7 +32,7 @@ const projects = [
   },
   {
     title: "Real-Time-Body-Language-Decoder ",
-    cardImage: "assets/images/project-page/body_language.gif",
+    cardImage: "assets/images/project-page/body_language_optimized.mp4",
     description: "Exercise tracker built using basic redux.",
     tagimg: "https://miro.medium.com/max/2800/0*U2DmhXYumRyXH6X1.png",
     Previewlink: "",
