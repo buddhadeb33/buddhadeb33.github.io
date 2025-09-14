@@ -20,8 +20,8 @@ let header = $(`
    <li class="nav-item nav-item-hover"><a class="nav-link" href="index.html">Home</a></li>
    <li class="nav-item nav-item-hover"><a class="nav-link" href="#skills">Skills</a></li>
    <li class="nav-item nav-item-hover"><a class="nav-link" href="projects.html">Projects</a></li>
-   <li class="nav-item nav-item-hover"><a class="nav-link" href="experience.html">Experience</a></li>
-   <li class="nav-item nav-item-hover"><a class="nav-link" href="education.html">Education</a></li>
+        <li class="nav-item nav-item-hover"><a class="nav-link" href="#experience">Experience</a></li>
+   <li class="nav-item nav-item-hover"><a class="nav-link" href="#education">Education</a></li>
    <li class="nav-item nav-item-hover"><a class="nav-link" href="reference.html">Reference</a></li>
    <li class="nav-item nav-item-hover"><a class="nav-link" href="index.html" target="_blank">Resume</a></li>
    <li class="nav-item">
@@ -361,9 +361,18 @@ if (localStorage.getItem("lightMode") == "dark") {
 
   //to add dark theme to nav bar after its been loaded
   window.addEventListener("load", function () {
-    var nav = document.getElementById("navbar");
-    nav.classList.add("dark-theme");
-    document.getElementById("dark_toggler").checked = true;
+    var nav = document.querySelector(".landing-nav") || document.getElementById("navbar");
+    if (nav) nav.classList.add("dark-theme");
+    var toggler = document.getElementById("dark_toggler");
+    if (toggler) toggler.checked = true;
+  });
+  
+  // Also set on DOMContentLoaded for faster initialization
+  document.addEventListener("DOMContentLoaded", function () {
+    var nav = document.querySelector(".landing-nav") || document.getElementById("navbar");
+    if (nav) nav.classList.add("dark-theme");
+    var toggler = document.getElementById("dark_toggler");
+    if (toggler) toggler.checked = true;
   });
 
   var sc = document.getElementsByClassName("socialicon");
@@ -377,17 +386,17 @@ if (localStorage.getItem("lightMode") == "dark") {
 function toggle_light_mode() {
   console.log(localStorage.getItem("lightMode"));
   var app = document.getElementsByTagName("HTML")[0];
-  var nav = document.getElementById("navbar");
+  var nav = document.querySelector(".landing-nav") || document.getElementById("navbar");
   if (localStorage.lightMode == "dark") {
     localStorage.lightMode = "light";
     app.setAttribute("light-mode", "light");
-    nav.classList.remove("dark-theme");
+    if (nav) nav.classList.remove("dark-theme");
     var sc = document.getElementsByClassName("socialicon");
     for (var i = 0; i < sc.length; i++) {
       sc[i].classList.remove("dsc");
     }
   } else {
-    nav.classList.add("dark-theme");
+    if (nav) nav.classList.add("dark-theme");
     localStorage.lightMode = "dark";
     app.setAttribute("light-mode", "dark");
     var sc = document.getElementsByClassName("socialicon");
