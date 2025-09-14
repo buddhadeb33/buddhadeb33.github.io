@@ -1,111 +1,218 @@
-var cursor = {
-    delay: 8,
-    _x: 0,
-    _y: 0,
-    endX: (window.innerWidth / 2),
-    endY: (window.innerHeight / 2),
-    cursorVisible: true,
-    cursorEnlarged: false,
-    $dot: document.querySelector('.cursor-dot'),
-    $outline: document.querySelector('.cursor-dot-outline'),
+class EnhancedCursor {
+    constructor() {
+        this.delay = 6;
+        this._x = 0;
+        this._y = 0;
+        this.endX = window.innerWidth / 2;
+        this.endY = window.innerHeight / 2;
+        this.cursorVisible = true;
+        this.isHovering = false;
+        this.isClicking = false;
+        this.isOnText = false;
+        this.isLoading = false;
+        
+        this.$dot = document.querySelector('.cursor-dot');
+        this.$outline = document.querySelector('.cursor-dot-outline');
+        
+        this.init();
+    }
     
-    init: function() {
-        // Set up element sizes
-        this.dotSize = this.$dot.offsetWidth;
-        this.outlineSize = this.$outline.offsetWidth;
+    init() {
+        if (!this.$dot || !this.$outline) {
+            console.warn('Cursor elements not found');
+            return;
+        }
         
         this.setupEventListeners();
-        this.animateDotOutline();
-    },
-
-    setupEventListeners: function() {
-        var self = this;
-        
-        // Anchor hovering
-        document.querySelectorAll('a').forEach(function(el) {
-            el.addEventListener('mouseover', function() {
-                self.cursorEnlarged = true;
-                self.toggleCursorSize();
-            });
-            el.addEventListener('mouseout', function() {
-                self.cursorEnlarged = false;
-                self.toggleCursorSize();
-            });
+        this.animate();
+        this.showCursor();
+    }
+    
+    setupEventListeners() {
+        // Mouse movement
+        document.addEventListener('mousemove', (e) => {
+            this.endX = e.clientX;
+            this.endY = e.clientY;
+            this.showCursor();
         });
+        
+        // Mouse enter/leave document
+        document.addEventListener('mouseenter', () => this.showCursor());
+        document.addEventListener('mouseleave', () => this.hideCursor());
         
         // Click events
-        document.addEventListener('mousedown', function() {
-            self.cursorEnlarged = true;
-            self.toggleCursorSize();
-        });
-        document.addEventListener('mouseup', function() {
-            self.cursorEnlarged = false;
-            self.toggleCursorSize();
-        });
-  
-  
-        document.addEventListener('mousemove', function(e) {
-            // Show the cursor
-            self.cursorVisible = true;
-            self.toggleCursorVisibility();
-
-            // Position the dot
-            self.endX = e.pageX;
-            self.endY = e.pageY;
-            self.$dot.style.top = self.endY + 'px';
-            self.$dot.style.left = self.endX + 'px';
-        });
+        document.addEventListener('mousedown', () => this.handleClick());
+        document.addEventListener('mouseup', () => this.handleClickEnd());
         
-        // Hide/show cursor
-        document.addEventListener('mouseenter', function(e) {
-            self.cursorVisible = true;
-            self.toggleCursorVisibility();
-            self.$dot.style.opacity = 1;
-            self.$outline.style.opacity = 1;
-        });
+        // Hover events for interactive elements
+        this.setupHoverEvents();
         
-        document.addEventListener('mouseleave', function(e) {
-            self.cursorVisible = true;
-            self.toggleCursorVisibility();
-            self.$dot.style.opacity = 0;
-            self.$outline.style.opacity = 0;
-        });
-    },
+        // Text selection
+        document.addEventListener('selectstart', () => this.handleTextSelection());
+        document.addEventListener('selectionchange', () => this.handleTextSelection());
+        
+        // Loading states
+        window.addEventListener('load', () => this.handlePageLoad());
+        
+        // Resize
+        window.addEventListener('resize', () => this.handleResize());
+    }
     
-    animateDotOutline: function() {
-        var self = this;
+    setupHoverEvents() {
+        // Links
+        document.querySelectorAll('a, button, [role="button"]').forEach(el => {
+            el.addEventListener('mouseenter', () => this.handleHover('link'));
+            el.addEventListener('mouseleave', () => this.handleHoverEnd());
+        });
         
-        self._x += (self.endX - self._x) / self.delay;
-        self._y += (self.endY - self._y) / self.delay;
-        self.$outline.style.top = self._y + 'px';
-        self.$outline.style.left = self._x + 'px';
+        // Input fields and text areas
+        document.querySelectorAll('input, textarea, [contenteditable]').forEach(el => {
+            el.addEventListener('mouseenter', () => this.handleHover('text'));
+            el.addEventListener('mouseleave', () => this.handleHoverEnd());
+        });
         
-        requestAnimationFrame(this.animateDotOutline.bind(self));
-    },
+        // Images
+        document.querySelectorAll('img').forEach(el => {
+            el.addEventListener('mouseenter', () => this.handleHover('image'));
+            el.addEventListener('mouseleave', () => this.handleHoverEnd());
+        });
+        
+        // Navigation elements
+        document.querySelectorAll('.nav-link, .nav-social-icon').forEach(el => {
+            el.addEventListener('mouseenter', () => this.handleHover('nav'));
+            el.addEventListener('mouseleave', () => this.handleHoverEnd());
+        });
+    }
     
-    toggleCursorSize: function() {
-        var self = this;
+    animate() {
+        this._x += (this.endX - this._x) / this.delay;
+        this._y += (this.endY - this._y) / this.delay;
         
-        if (self.cursorEnlarged) {
-            self.$dot.style.transform = 'translate(-50%, -50%) scale(0.75)';
-            self.$outline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        } else {
-            self.$dot.style.transform = 'translate(-50%, -50%) scale(1)';
-            self.$outline.style.transform = 'translate(-50%, -50%) scale(1)';
+        this.$outline.style.left = this._x + 'px';
+        this.$outline.style.top = this._y + 'px';
+        
+        this.$dot.style.left = this.endX + 'px';
+        this.$dot.style.top = this.endY + 'px';
+        
+        requestAnimationFrame(() => this.animate());
+    }
+    
+    showCursor() {
+        this.cursorVisible = true;
+        this.$dot.style.opacity = '1';
+        this.$outline.style.opacity = '1';
+    }
+    
+    hideCursor() {
+        this.cursorVisible = false;
+        this.$dot.style.opacity = '0';
+        this.$outline.style.opacity = '0';
+    }
+    
+    handleHover(type) {
+        this.isHovering = true;
+        this.clearStates();
+        
+        switch(type) {
+            case 'link':
+                this.$dot.classList.add('hover');
+                this.$outline.classList.add('hover');
+                break;
+            case 'text':
+                this.$dot.classList.add('text');
+                this.$outline.classList.add('text');
+                break;
+            case 'image':
+                this.$dot.classList.add('hover');
+                this.$outline.classList.add('hover');
+                break;
+            case 'nav':
+                this.$dot.classList.add('hover');
+                this.$outline.classList.add('hover');
+                break;
         }
-    },
+    }
     
-    toggleCursorVisibility: function() {
-        var self = this;
+    handleHoverEnd() {
+        this.isHovering = false;
+        this.clearStates();
+    }
+    
+    handleClick() {
+        this.isClicking = true;
+        this.clearStates();
+        this.$dot.classList.add('click');
+        this.$outline.classList.add('click');
+    }
+    
+    handleClickEnd() {
+        this.isClicking = false;
+        setTimeout(() => {
+            if (!this.isClicking) {
+                this.clearStates();
+            }
+        }, 150);
+    }
+    
+    handleTextSelection() {
+        const selection = window.getSelection();
+        this.isOnText = selection.toString().length > 0;
         
-        if (self.cursorVisible) {
-            self.$dot.style.opacity = 1;
-            self.$outline.style.opacity = 1;
-        } else {
-            self.$dot.style.opacity = 0;
-            self.$outline.style.opacity = 0;
+        if (this.isOnText) {
+            this.clearStates();
+            this.$dot.classList.add('text');
+            this.$outline.classList.add('text');
+        } else if (!this.isHovering) {
+            this.clearStates();
         }
+    }
+    
+    handlePageLoad() {
+        this.isLoading = false;
+        this.clearStates();
+    }
+    
+    handleResize() {
+        // Recalculate positions if needed
+        this.endX = Math.min(this.endX, window.innerWidth);
+        this.endY = Math.min(this.endY, window.innerHeight);
+    }
+    
+    clearStates() {
+        this.$dot.classList.remove('hover', 'click', 'text', 'loading');
+        this.$outline.classList.remove('hover', 'click', 'text', 'loading');
+    }
+    
+    // Public methods for external control
+    setLoading(loading) {
+        this.isLoading = loading;
+        if (loading) {
+            this.clearStates();
+            this.$dot.classList.add('loading');
+            this.$outline.classList.add('loading');
+        } else {
+            this.clearStates();
+        }
+    }
+    
+    setCustomState(className) {
+        this.clearStates();
+        this.$dot.classList.add(className);
+        this.$outline.classList.add(className);
     }
 }
 
-cursor.init();
+// Initialize cursor when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    // Only initialize on desktop
+    if (window.innerWidth > 768) {
+        new EnhancedCursor();
+    }
+});
+
+// Re-initialize on resize if switching between mobile/desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && !document.querySelector('.cursor-dot').style.display) {
+        new EnhancedCursor();
+    }
+});

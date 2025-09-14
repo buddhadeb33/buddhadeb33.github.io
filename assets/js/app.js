@@ -435,3 +435,41 @@ $(window).on("load", function () {
   }, 1000);
   $(".loader-container").fadeOut(2500);
 });
+
+// Section Header Scroll Animations
+function initSectionHeaderAnimations() {
+  const sectionHeaders = document.querySelectorAll('.section-header');
+  const sectionSubtitles = document.querySelectorAll('.section-subtitle');
+  
+  const observerOptions = {
+    threshold: 0.3,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, observerOptions);
+  
+  // Observe all section headers and subtitles
+  sectionHeaders.forEach(header => {
+    observer.observe(header);
+  });
+  
+  sectionSubtitles.forEach(subtitle => {
+    observer.observe(subtitle);
+  });
+}
+
+// Initialize animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  initSectionHeaderAnimations();
+});
+
+// Re-initialize on page load (for dynamic content)
+window.addEventListener('load', function() {
+  setTimeout(initSectionHeaderAnimations, 100);
+});
