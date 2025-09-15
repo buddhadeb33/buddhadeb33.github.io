@@ -5,28 +5,109 @@ body * {
   cursor: none;
 }
 
-
+/* Enhanced Custom Cursor */
 .cursor-dot,
 .cursor-dot-outline {
   pointer-events: none;
-  z-index: 2;
-  position: absolute;
+  z-index: 9999;
+  position: fixed;
   top: 50%;
   left: 50%;
   border-radius: 50%;
   opacity: 0;
   transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  will-change: transform;
 }
 
 .cursor-dot {
-  width: 10px;
-  height: 10px;
-  background-color: #b83030f1;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .cursor-dot-outline {
-  width: 20px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 2px solid rgba(102, 126, 234, 0.3);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+/* Cursor states */
+.cursor-dot.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.6);
+}
+
+.cursor-dot-outline.hover {
+  transform: translate(-50%, -50%) scale(1.8);
+  border-color: rgba(255, 107, 107, 0.5);
+  box-shadow: 0 0 25px rgba(255, 107, 107, 0.3);
+}
+
+.cursor-dot.click {
+  transform: translate(-50%, -50%) scale(0.8);
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.7);
+}
+
+.cursor-dot-outline.click {
+  transform: translate(-50%, -50%) scale(2.2);
+  border-color: rgba(0, 210, 255, 0.6);
+  box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
+}
+
+/* Text cursor */
+.cursor-dot.text {
+  transform: translate(-50%, -50%) scale(0.3);
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 2px;
+  width: 2px;
   height: 20px;
-  background-color: rgba(211, 115, 115, 0.959);
+}
+
+.cursor-dot-outline.text {
+  transform: translate(-50%, -50%) scale(1.2);
+  border-color: rgba(240, 147, 251, 0.4);
+  border-radius: 2px;
+  width: 4px;
+  height: 24px;
+}
+
+/* Loading cursor */
+.cursor-dot.loading {
+  animation: cursorPulse 1s ease-in-out infinite;
+}
+
+.cursor-dot-outline.loading {
+  animation: cursorRotate 2s linear infinite;
+}
+
+@keyframes cursorPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.7; }
+}
+
+@keyframes cursorRotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Hide cursor on mobile */
+@media (max-width: 768px) {
+  html,
+  html *,
+  body,
+  body * {
+    cursor: auto;
+  }
+  
+  .cursor-dot,
+  .cursor-dot-outline {
+    display: none;
+  }
 }
