@@ -59,45 +59,49 @@
     <!--Dynamic Nav Bar-->
     <nav class="landing-nav">
         <div class="nav-container">
-            <div class="nav-brand">
-                <a href="index.html" class="brand-link">Buddha</a>
-            </div>
-            
-            <div class="nav-links" id="nav-links">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="blogs.html" class="nav-link">Blogs</a>
-                <a href="resume.html" class="nav-link">Resume</a>
-                <a href="reference.html" class="nav-link">References</a>
-            </div>
-            <div class="nav-controls">
-                <div class="nav-social-icons">
-                    <a href="https://www.linkedin.com/in/buddhadeb33" target="_blank" class="nav-social-icon linkedin">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://twitter.com/buddhadeb33" target="_blank" class="nav-social-icon twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://github.com/buddhadeb33" target="_blank" class="nav-social-icon github">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://wa.me/919876543210" target="_blank" class="nav-social-icon whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="mailto:buddhadeb33@gmail.com" class="nav-social-icon email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://medium.com/@buddhadeb33" target="_blank" class="nav-social-icon medium">
-                        <i class="fab fa-medium-m"></i>
-                    </a>
+            <!-- First Row: Brand, Navigation Links, and Dark/Light Toggle -->
+            <div class="nav-row nav-row-1">
+                <div class="nav-brand">
+                    <a href="index.html" class="brand-link">Buddha</a>
                 </div>
-                <input type="checkbox" id="dark_toggler" class="dark_toggler" aria-label="Toggle Light Mode" onclick="toggle_light_mode()">
+                
+                <div class="nav-links" id="nav-links">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#education" class="nav-link">Education</a>
+                    <a href="projects.html" class="nav-link">Projects</a>
+                    <a href="blogs.html" class="nav-link">Blogs</a>
+                    <a href="reference.html" class="nav-link">References</a>
+                </div>
+                
+                <div class="nav-toggle-container">
+                    <input type="checkbox" id="dark_toggler" class="dark_toggler" aria-label="Toggle Light Mode" onclick="toggle_light_mode()">
+                </div>
             </div>
         </div>
     </nav>
+    
+    <!-- Floating Social Icons - Completely Separate -->
+    <div class="floating-social-container">
+        <div class="nav-social-icons">
+            <a href="https://www.linkedin.com/in/buddhadeb33" target="_blank" class="nav-social-icon linkedin">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://twitter.com/buddhadeb33" target="_blank" class="nav-social-icon twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://github.com/buddhadeb33" target="_blank" class="nav-social-icon github">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://wa.me/919876543210" target="_blank" class="nav-social-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://medium.com/@buddhadeb33" target="_blank" class="nav-social-icon medium">
+                <i class="fab fa-medium-m"></i>
+            </a>
+        </div>
+    </div>
 
     <!--Particles effect-->
     <div id="particles-js"></div>
@@ -131,9 +135,75 @@
         </section>
     </div>
 
+    <!-- Contact Me & Download Resume Button Section -->
+    <div class="container contact-button-section" style="padding: 60px 0; background: transparent; position: relative; z-index: 10;">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <div class="button-container">
+                    <div class="contact-button-container">
+                        <button class="contact-me-btn" onclick="scrollToContact()">
+                            <span class="btn-text">
+                                <i class="fas fa-paper-plane"></i>
+                                Get In Touch
+                            </span>
+                            <span class="btn-shine"></span>
+                            <div class="btn-particles">
+                                <span class="particle"></span>
+                                <span class="particle"></span>
+                                <span class="particle"></span>
+                                <span class="particle"></span>
+                                <span class="particle"></span>
+                            </div>
+                        </button>
+                    </div>
+                    
+                    <div class="resume-button-container">
+                        <a href="index.html" class="download-resume-btn">
+                            <span class="btn-text">
+                                <i class="fas fa-download"></i>
+                                Download Resume
+                            </span>
+                            <span class="btn-shine"></span>
+                            <div class="btn-particles">
+                                <span class="particle"></span>
+                                <span class="particle"></span>
+                                <span class="particle"></span>
+                                <span class="particle"></span>
+                                <span class="particle"></span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <p class="contact-subtitle">Let's collaborate and build something amazing together</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Skills Section -->
-    <section id="skills" class="container" style="padding: 40px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <section id="skills" class="container" style="padding: 40px 0; background: transparent;">
+        <!-- Skills SVG Animation -->
+        <div class="section-svg-animation">
+            <svg class="skills-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background circles -->
+                <circle cx="50" cy="50" r="30" fill="rgba(102, 126, 234, 0.1)" class="svg-circle-1"/>
+                <circle cx="350" cy="150" r="25" fill="rgba(118, 75, 162, 0.1)" class="svg-circle-2"/>
+                <circle cx="200" cy="100" r="20" fill="rgba(240, 147, 251, 0.1)" class="svg-circle-3"/>
+                
+                <!-- Floating tech icons -->
+                <g class="tech-icons">
+                    <circle cx="100" cy="80" r="8" fill="#667eea" class="tech-dot-1"/>
+                    <circle cx="300" cy="120" r="6" fill="#764ba2" class="tech-dot-2"/>
+                    <circle cx="150" cy="150" r="7" fill="#f093fb" class="tech-dot-3"/>
+                    <circle cx="250" cy="60" r="5" fill="#4facfe" class="tech-dot-4"/>
+                </g>
+                
+                <!-- Connection lines -->
+                <path d="M100 80 Q200 100 300 120" stroke="rgba(102, 126, 234, 0.3)" stroke-width="2" fill="none" class="connection-line-1"/>
+                <path d="M150 150 Q200 100 250 60" stroke="rgba(118, 75, 162, 0.3)" stroke-width="2" fill="none" class="connection-line-2"/>
+            </svg>
+        </div>
+        
         <div class="row">
             <div class="col-12 text-center mb-3">
                 <h2 class="section-header">Technical Expertise</h2>
@@ -281,7 +351,29 @@
     </script>
 
     <!-- Experience Section -->
-    <section id="experience" class="container" style="padding: 5px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden;">
+    <section id="experience" class="container" style="padding: 5px 0; background: transparent; position: relative; overflow: hidden;">
+        <!-- Experience SVG Animation -->
+        <div class="section-svg-animation">
+            <svg class="experience-svg" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Timeline line -->
+                <line x1="50" y1="75" x2="350" y2="75" stroke="rgba(102, 126, 234, 0.4)" stroke-width="3" class="timeline-line"/>
+                
+                <!-- Timeline nodes -->
+                <circle cx="80" cy="75" r="8" fill="#667eea" class="timeline-node-1"/>
+                <circle cx="150" cy="75" r="8" fill="#764ba2" class="timeline-node-2"/>
+                <circle cx="220" cy="75" r="8" fill="#f093fb" class="timeline-node-3"/>
+                <circle cx="290" cy="75" r="8" fill="#4facfe" class="timeline-node-4"/>
+                
+                <!-- Floating elements -->
+                <g class="floating-elements">
+                    <rect x="60" y="30" width="12" height="12" fill="rgba(102, 126, 234, 0.6)" class="float-square-1"/>
+                    <rect x="320" y="100" width="10" height="10" fill="rgba(118, 75, 162, 0.6)" class="float-square-2"/>
+                    <circle cx="120" cy="120" r="6" fill="rgba(240, 147, 251, 0.6)" class="float-circle-1"/>
+                    <circle cx="280" cy="40" r="5" fill="rgba(79, 172, 254, 0.6)" class="float-circle-2"/>
+                </g>
+            </svg>
+        </div>
+        
         <div class="row" style="position: relative; z-index: 2;">
             <div class="col-12 text-center mb-1">
                 <h2 class="section-header">Professional Journey</h2>
@@ -400,7 +492,34 @@
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="container" style="padding: 10px 0; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); position: relative; overflow: hidden;">
+    <section id="education" class="container" style="padding: 10px 0; background: transparent; position: relative; overflow: hidden;">
+        <!-- Education SVG Animation -->
+        <div class="section-svg-animation">
+            <svg class="education-svg" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                <!-- Graduation cap -->
+                <g class="graduation-cap">
+                    <path d="M200 40 L160 60 L240 60 Z" fill="rgba(79, 172, 254, 0.8)" class="cap-top"/>
+                    <rect x="170" y="60" width="60" height="8" fill="rgba(0, 242, 254, 0.8)" class="cap-band"/>
+                    <circle cx="200" cy="68" r="3" fill="rgba(255, 255, 255, 0.9)" class="cap-button"/>
+                </g>
+                
+                <!-- Floating certificates -->
+                <g class="certificates">
+                    <rect x="80" y="100" width="40" height="30" rx="3" fill="rgba(102, 126, 234, 0.6)" class="cert-1"/>
+                    <rect x="280" y="90" width="35" height="25" rx="3" fill="rgba(118, 75, 162, 0.6)" class="cert-2"/>
+                    <rect x="150" y="120" width="30" height="20" rx="3" fill="rgba(240, 147, 251, 0.6)" class="cert-3"/>
+                </g>
+                
+                <!-- Knowledge particles -->
+                <g class="knowledge-particles">
+                    <circle cx="120" cy="60" r="4" fill="rgba(79, 172, 254, 0.7)" class="particle-1"/>
+                    <circle cx="280" cy="70" r="3" fill="rgba(0, 242, 254, 0.7)" class="particle-2"/>
+                    <circle cx="100" cy="140" r="5" fill="rgba(102, 126, 234, 0.7)" class="particle-3"/>
+                    <circle cx="300" cy="130" r="4" fill="rgba(118, 75, 162, 0.7)" class="particle-4"/>
+                </g>
+            </svg>
+        </div>
+        
         <div class="row" style="position: relative; z-index: 2;">
             <div class="col-12 text-center mb-2">
                 <h2 class="section-header">Education & Certifications</h2>
@@ -613,6 +732,18 @@
                 });
             });
         });
+    </script>
+
+    <!-- Contact Button JavaScript -->
+    <script>
+        function scrollToContact() {
+            // For now, scroll to the bottom of the page
+            // You can change this to scroll to a specific contact section later
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
     </script>
 
 </body>
