@@ -473,3 +473,34 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function() {
   setTimeout(initSectionHeaderAnimations, 100);
 });
+
+// Navigation Responsive Handler
+document.addEventListener('DOMContentLoaded', function() {
+  // Force navigation to recalculate on window resize
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      // Trigger a reflow to ensure CSS media queries are applied
+      const nav = document.querySelector('.landing-nav');
+      if (nav) {
+        nav.style.display = 'none';
+        nav.offsetHeight; // Trigger reflow
+        nav.style.display = '';
+      }
+    }, 100);
+  });
+  
+  // Also handle fullscreen changes
+  document.addEventListener('fullscreenchange', function() {
+    setTimeout(function() {
+      const nav = document.querySelector('.landing-nav');
+      if (nav) {
+        nav.style.display = 'none';
+        nav.offsetHeight; // Trigger reflow
+        nav.style.display = '';
+      }
+    }, 100);
+  });
+});
+

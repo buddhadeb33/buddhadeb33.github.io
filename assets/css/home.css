@@ -138,18 +138,20 @@ html[light-mode="dark"] .section-subtitle {
   background: rgba(0, 0, 0, 0.8) !important;
   backdrop-filter: blur(10px) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  min-height: 60px !important;
+  min-height: clamp(50px, 4vw, 60px) !important;
 }
 
 .landing-nav .nav-container {
   width: 100% !important;
   max-width: none !important;
   margin: 0 !important;
-  padding: 10px 30px !important;
+  padding: clamp(6px, 0.8vw, 8px) clamp(12px, 2vw, 25px) !important;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  min-height: 60px !important;
+  min-height: clamp(50px, 4vw, 60px) !important;
+  flex-wrap: nowrap !important;
+  overflow: hidden !important;
 }
 
 .nav-brand {
@@ -158,7 +160,7 @@ html[light-mode="dark"] .section-subtitle {
 
 .nav-brand .brand-link {
   font-family: 'Agustina', cursive !important;
-  font-size: 32px !important;
+  font-size: clamp(18px, 1.8vw, 28px) !important;
   font-weight: 700 !important;
   text-decoration: none !important;
   transition: all 0.3s ease !important;
@@ -174,32 +176,36 @@ html[light-mode="dark"] .section-subtitle {
 .nav-links {
   display: flex !important;
   align-items: center !important;
-  gap: 20px !important;
+  gap: clamp(4px, 1vw, 16px) !important;
   flex: 1 !important;
   justify-content: center !important;
+  flex-wrap: nowrap !important;
+  overflow: hidden !important;
 }
 
 .nav-link {
   text-decoration: none !important;
   font-weight: 500 !important;
-  font-size: 1rem !important;
-  padding: 8px 12px !important;
+  font-size: clamp(0.7rem, 0.8vw, 0.9rem) !important;
+  padding: clamp(3px, 0.6vw, 6px) clamp(4px, 0.8vw, 8px) !important;
   border-radius: 6px !important;
   transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
 }
 
 .nav-controls {
   display: flex !important;
   align-items: center !important;
-  gap: 15px !important;
+  gap: clamp(6px, 1vw, 12px) !important;
   flex-shrink: 0 !important;
 }
 
 .nav-social-icons {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
-  margin-right: 20px !important;
+  gap: clamp(4px, 0.8vw, 8px) !important;
+  margin-right: clamp(8px, 1vw, 15px) !important;
   flex-shrink: 0 !important;
 }
 
@@ -207,8 +213,8 @@ html[light-mode="dark"] .section-subtitle {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 40px !important;
-  height: 40px !important;
+  width: clamp(28px, 2.5vw, 36px) !important;
+  height: clamp(28px, 2.5vw, 36px) !important;
   border-radius: 50% !important;
   text-decoration: none !important;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -903,112 +909,11 @@ html[light-mode="dark"] .social-section {
 }
 
 
-/* Responsive styles for new layout */
-@media (max-width: 768px) {
-  .home-upper {
-    padding-top: 70px; /* Account for smaller fixed navigation */
-  }
-  
-  .landing-nav .nav-container {
-    padding: 8px 20px !important;
-    min-height: 50px !important;
-  }
-  
-  .nav-brand .brand-link {
-    font-size: 28px !important;
-  }
-  
-  .nav-links {
-    gap: 15px !important;
-  }
-  
-  .nav-link {
-    font-size: 0.9rem !important;
-    padding: 6px 10px !important;
-  }
-  
-  .nav-social-icons {
-    gap: 10px !important;
-    margin-right: 15px !important;
-  }
-  
-  .nav-social-icon {
-    width: 36px !important;
-    height: 36px !important;
-  }
-  
-  .nav-social-icon i {
-    font-size: 16px !important;
-  }
-  
-  
-  .home_head {
-    font-size: 2.5rem;
-  }
-  
-  .pre-heading {
-    font-size: 1rem;
-  }
-  
-  .profile-section .profile-image {
-    height: 200px !important;
-    width: 200px !important;
-  }
-  
-  .about-section {
-    max-width: 100%;
-    padding: 2rem 2rem;
-  }
-  
-  .about-section p {
-    font-size: 1rem;
-  }
-}
+/* Viewport-based responsive navigation - no media queries needed */
 
-@media (max-width: 480px) {
-  .home-upper {
-    padding-top: 60px; /* Account for smallest fixed navigation */
-  }
-  
-  #home {
-    padding: 20px 10px 20px 10px;
-  }
-  
-  .profile-section .profile-image {
-    height: 120px !important;
-    width: 120px !important;
-  }
-  
-  .about-section {
-    padding: 1.5rem 1.5rem;
-  }
-  
-  .about-section p {
-    font-size: 0.95rem;
-  }
-  
-  .social-section {
-    padding: 12px;
-  }
-  
-  /* Social icons for very small screens */
-  .nav-social-icons {
-    gap: 8px !important;
-    margin-right: 10px !important;
-  }
-  
-  .nav-social-icon {
-    width: 32px !important;
-    height: 32px !important;
-  }
-  
-  .nav-social-icon i {
-    font-size: 14px !important;
-  }
-  
-  .nav-social-icon:hover {
-    transform: translateY(-2px) scale(1.05) !important;
-  }
+/* Ensure home content doesn't get hidden behind navigation */
+.home-upper {
+  padding-top: clamp(70px, 6vw, 80px) !important;
 }
 
 /*Declaration of CSS variables for light/dark theme*/
@@ -3173,9 +3078,6 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 0.6rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
   position: relative;
 }
 
