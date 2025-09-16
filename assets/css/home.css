@@ -253,6 +253,7 @@ html[light-mode="dark"] .section-subtitle {
 
 .nav-social-icons {
   display: flex !important;
+  flex-direction: column !important;
   align-items: center !important;
   gap: clamp(12px, 2vw, 20px) !important;
   margin-right: clamp(8px, 1vw, 15px) !important;
