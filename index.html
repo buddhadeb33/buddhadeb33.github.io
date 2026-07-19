@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <title>Buddhadeb Mondal | AI Architect — GenAI, LLMs &amp; RAG</title>
   <meta name="description" content="Buddhadeb Mondal is an AI Architect with 8+ years of experience (since Feb 2018) building production GenAI systems, RAG pipelines, and ML platforms across healthcare, telecom, and finance.">
   <meta name="keywords" content="AI Engineer, GenAI Engineer, AI Architect, Senior Data Scientist, Generative AI, LLM, RAG, Agentic AI, AI Agents, Multi-Agent Systems, MCP, Model Context Protocol, A2A, LangGraph, LangChain, LLMOps, MLOps, Vertex AI, Machine Learning, Buddhadeb Mondal, production AI">
@@ -76,7 +84,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="site-wrap site-nav">
-      <a class="brand" href="index.html" aria-label="Buddha. — Home"><img class="brand-logo brand-logo-dark" src="assets/images/brand/buddha-logo-animated.svg?v=2" alt="Buddha." width="200" height="63" decoding="async"><img class="brand-logo brand-logo-light" src="assets/images/brand/buddha-logo-animated-light.svg?v=2" alt="" width="200" height="63" decoding="async" aria-hidden="true"></a>
+      <a class="brand" href="index.html" aria-label="Buddha. — Home"><img class="brand-logo" data-brand-logo alt="Buddha." width="200" height="63" decoding="async" fetchpriority="high" data-src-dark="assets/images/brand/buddha-logo-animated.svg?v=3" data-src-light="assets/images/brand/buddha-logo-animated-light.svg?v=3"></a><script>(function(){var i=document.querySelector("[data-brand-logo]");if(!i)return;var t=document.documentElement.getAttribute("data-theme")||"dark";i.src=i.getAttribute(t==="light"?"data-src-light":"data-src-dark");})();</script>
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button>
       <nav class="nav-links" data-nav-links aria-label="Primary">
         <a href="index.html">Home</a>

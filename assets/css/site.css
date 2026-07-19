@@ -202,19 +202,6 @@ a {
   object-fit: contain;
 }
 
-/* Dual theme logo swap */
-.brand-logo-light {
-  display: none;
-}
-
-html[data-theme="light"] .brand-logo-dark {
-  display: none;
-}
-
-html[data-theme="light"] .brand-logo-light {
-  display: block;
-}
-
 .brand span {
   color: var(--accent);
 }

@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <title>A Practical RAG Production Checklist | Buddhadeb Mondal</title>
   <meta name="description" content="A practical checklist for shipping retrieval-augmented generation (RAG) to production — data, retrieval quality, evaluation, monitoring, and ownership.">
   <meta name="robots" content="index,follow">
@@ -31,7 +39,7 @@
 <body>
   <header class="site-header">
     <div class="site-wrap site-nav">
-      <a class="brand" href="../index.html" aria-label="Buddha. — Home"><img class="brand-logo brand-logo-dark" src="../assets/images/brand/buddha-logo-animated.svg?v=2" alt="Buddha." width="200" height="63" decoding="async"><img class="brand-logo brand-logo-light" src="../assets/images/brand/buddha-logo-animated-light.svg?v=2" alt="" width="200" height="63" decoding="async" aria-hidden="true"></a>
+      <a class="brand" href="../index.html" aria-label="Buddha. — Home"><img class="brand-logo" data-brand-logo alt="Buddha." width="200" height="63" decoding="async" fetchpriority="high" data-src-dark="../assets/images/brand/buddha-logo-animated.svg?v=3" data-src-light="../assets/images/brand/buddha-logo-animated-light.svg?v=3"></a><script>(function(){var i=document.querySelector("[data-brand-logo]");if(!i)return;var t=document.documentElement.getAttribute("data-theme")||"dark";i.src=i.getAttribute(t==="light"?"data-src-light":"data-src-dark");})();</script>
       <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button>
       <nav class="nav-links" data-nav-links aria-label="Primary">
         <a href="../index.html">Home</a>

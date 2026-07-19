@@ -4,9 +4,22 @@
   const initial = stored === "light" || stored === "dark" ? stored : "dark";
   root.setAttribute("data-theme", initial);
 
+  function syncBrandLogo(theme) {
+    document.querySelectorAll("[data-brand-logo]").forEach(function (img) {
+      const next =
+        theme === "light"
+          ? img.getAttribute("data-src-light")
+          : img.getAttribute("data-src-dark");
+      if (next && img.getAttribute("src") !== next) {
+        img.src = next;
+      }
+    });
+  }
+
   function setTheme(next) {
     root.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
+    syncBrandLogo(next);
     const toggler = document.getElementById("dark_toggler");
     if (toggler) {
       toggler.checked = next === "dark";
