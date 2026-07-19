@@ -1,6 +1,8 @@
 # Buddhadeb Mondal — Portfolio
 
-Personal site for **Buddhadeb Mondal**, AI Architect.
+[![Buddhadeb Mondal — AI Engineer, GenAI Engineer, Senior Data Scientist](https://buddhadeb33.github.io/assets/images/github-banner.svg)](https://buddhadeb33.github.io/)
+
+Personal site for **Buddhadeb Mondal** — **AI Engineer · GenAI Engineer · Senior Data Scientist**. Building production Generative AI: LLMs, RAG, and AI agents.
 
 **Live:** [https://buddhadeb33.github.io/](https://buddhadeb33.github.io/)
 
@@ -44,11 +46,17 @@ Do these after you push to GitHub Pages:
 
 ### LinkedIn (fastest hire traffic)
 
-1. Headline example: `AI Architect | GenAI · LLMs · RAG | IIT Hyderabad`
+See **[linkedin-profile-kit.md](linkedin-profile-kit.md)** for paste-ready headline, About, Open-to-work titles, skills, and an upload checklist. Cover image: `assets/images/linkedin-cover.png`.
+
+1. Headline example: `AI Engineer | GenAI, LLMs, RAG & AI Agents in Production | Senior Data Scientist | Python, LangChain, GCP Vertex | IIT Hyderabad`
 2. Featured → add link to `https://buddhadeb33.github.io/`
-3. About section → short pitch + link to Work and Contact
+3. About section → paste the plain-text block from the kit (no unicode fonts — LinkedIn cannot search those)
 4. Pin 1–2 posts that link to a case study or blog post
 5. Keep experience dates aligned with the site
+
+### GitHub profile
+
+Profile README lives in a special repo named `buddhadeb33`. Paste-ready content: **[github-profile-README.md](github-profile-README.md)**. It uses the animated banner at `assets/images/github-banner.svg`.
 
 ### Content distribution
 

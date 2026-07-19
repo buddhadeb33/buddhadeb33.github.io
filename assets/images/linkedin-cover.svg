@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1584" height="396" viewBox="0 0 1584 396" role="img" aria-label="Buddhadeb Mondal LinkedIn cover — see linkedin-cover.png for final raster">
+  <!-- Reference layout only. Final cover is linkedin-cover.png (photographic background + type). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071410"/>
+      <stop offset="45%" stop-color="#0e2a22"/>
+      <stop offset="100%" stop-color="#1a3d32"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="30%" r="45%">
+      <stop offset="0%" stop-color="#3dba8c" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#3dba8c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="88%" cy="70%" r="35%">
+      <stop offset="0%" stop-color="#e8a54b" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#e8a54b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1584" height="396" fill="url(#bg)"/>
+  <rect width="1584" height="396" fill="url(#glow)"/>
+  <rect width="1584" height="396" fill="url(#glow2)"/>
+  <rect x="600" y="48" width="920" height="252" rx="22" fill="#081210" opacity="0.55"/>
+  <rect x="600" y="48" width="8" height="252" rx="4" fill="#3dba8c"/>
+  <rect x="0" y="330" width="1584" height="66" fill="#060e0c" opacity="0.85"/>
+  <rect x="0" y="330" width="1584" height="3" fill="#3dba8c"/>
+  <text x="632" y="92" fill="#5edcb4" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">OPEN TO HIRE</text>
+  <text x="632" y="158" fill="#f5faf7" font-family="Georgia, Times New Roman, serif" font-size="52" font-weight="700">Buddhadeb Mondal</text>
+  <text x="632" y="208" fill="#dcece4" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="23" font-weight="600">AI Architect · AI Engineer · GenAI Engineer · Data Scientist</text>
+  <text x="632" y="248" fill="#a8c4b8" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="19">LLMs · RAG · Agents · Production ML · IIT Hyderabad</text>
+  <text x="632" y="372" fill="#78dcd2" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="17" font-weight="600">UAE and Remote worldwide · buddhadeb33.github.io</text>
+</svg>

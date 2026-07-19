@@ -1006,12 +1006,58 @@ html[data-theme="light"] .nav-links {
   50% { transform: translateY(-3px); }
 }
 
+/* Animated agent-loop diagram */
+.diagram-orbit {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: diagram-spin 26s linear infinite;
+}
+
+.diagram-orbit-inner {
+  animation: diagram-spin 18s linear infinite reverse;
+}
+
+.diagram-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: diagram-pulse 3.2s var(--ease) infinite;
+  animation-delay: var(--halo-delay, 0s);
+}
+
+.diagram-packet {
+  offset-path: path("M140 52 L212 190 L68 190 Z");
+  offset-rotate: 0deg;
+  animation: diagram-travel 5.5s linear infinite;
+  filter: drop-shadow(0 0 4px var(--accent-hot));
+}
+
+@keyframes diagram-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes diagram-pulse {
+  0% { opacity: 0.7; transform: scale(1); }
+  60% { opacity: 0; transform: scale(1.6); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+@keyframes diagram-travel {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .social-bar a,
   .hero-pulse,
-  .skill-diagram::before {
+  .skill-diagram::before,
+  .diagram-orbit,
+  .diagram-orbit-inner,
+  .diagram-halo,
+  .diagram-packet {
     animation: none;
   }
+  .diagram-halo { opacity: 0; }
 }
 
 .hero-visual {

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-label="Buddhadeb Mondal - AI Engineer, GenAI Engineer, Senior Data Scientist">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07100e"/>
+      <stop offset="55%" stop-color="#0d1c18"/>
+      <stop offset="100%" stop-color="#112620"/>
+    </linearGradient>
+    <radialGradient id="glowT" cx="24%" cy="30%" r="42%">
+      <stop offset="0%" stop-color="#2dc89b" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#2dc89b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowG" cx="82%" cy="80%" r="40%">
+      <stop offset="0%" stop-color="#f0b446" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#f0b446" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f0b446"/>
+      <stop offset="30%" stop-color="#2dc89b"/>
+      <stop offset="100%" stop-color="#2dc89b" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="300" fill="url(#bg)"/>
+  <rect width="1280" height="300" fill="url(#glowT)"/>
+  <rect width="1280" height="300" fill="url(#glowG)"/>
+
+  <!-- top / bottom accent hairlines -->
+  <rect x="0" y="0" width="1280" height="4" fill="url(#rule)"/>
+  <rect x="0" y="296" width="1280" height="4" fill="#f0b446" opacity="0.5"/>
+
+  <!-- ============ LEFT: agent flow spine ============ -->
+  <g stroke="#178060" stroke-width="2">
+    <line x1="90" y1="60" x2="90" y2="240"/>
+  </g>
+
+  <!-- flowing energy along the spine -->
+  <line x1="90" y1="60" x2="90" y2="240" stroke="#2dc89b" stroke-width="2"
+        stroke-dasharray="10 170" stroke-linecap="round" opacity="0.9">
+    <animate attributeName="stroke-dashoffset" from="180" to="0" dur="2.6s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- faint network to the right of spine -->
+  <g stroke="#2dc89b" stroke-width="1" opacity="0.35">
+    <line x1="90" y1="60" x2="160" y2="80"/>
+    <line x1="90" y1="105" x2="210" y2="120"/>
+    <line x1="90" y1="150" x2="175" y2="165"/>
+    <line x1="90" y1="195" x2="230" y2="200"/>
+    <line x1="160" y1="80" x2="210" y2="120"/>
+    <line x1="175" y1="165" x2="230" y2="200"/>
+  </g>
+  <g fill="#2dc89b">
+    <circle cx="160" cy="80" r="3"/>
+    <circle cx="210" cy="120" r="3"/>
+    <circle cx="175" cy="165" r="3"/>
+    <circle cx="230" cy="200" r="3"/>
+    <circle cx="150" cy="210" r="3"/>
+  </g>
+
+  <!-- stage nodes (pulse) with labels -->
+  <g font-family="Verdana, Geneva, sans-serif" font-size="10" letter-spacing="2" fill="#7fbfa8">
+    <g>
+      <circle cx="90" cy="60" r="13" fill="#123a2e" stroke="#2dc89b" stroke-width="2"/>
+      <circle cx="90" cy="60" r="4" fill="#f0b446"/>
+      <circle cx="90" cy="60" r="13" fill="none" stroke="#2dc89b" stroke-width="2">
+        <animate attributeName="r" values="13;18;13" dur="3s" begin="0s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;0;0.7" dur="3s" begin="0s" repeatCount="indefinite"/>
+      </circle>
+      <text x="112" y="64">SIGNAL</text>
+    </g>
+    <g>
+      <circle cx="90" cy="105" r="13" fill="#123a2e" stroke="#2dc89b" stroke-width="2"/>
+      <circle cx="90" cy="105" r="4" fill="#f0b446"/>
+      <circle cx="90" cy="105" r="13" fill="none" stroke="#2dc89b" stroke-width="2">
+        <animate attributeName="r" values="13;18;13" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;0;0.7" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="112" y="109">CONTEXT</text>
+    </g>
+    <g>
+      <circle cx="90" cy="150" r="13" fill="#123a2e" stroke="#2dc89b" stroke-width="2"/>
+      <circle cx="90" cy="150" r="4" fill="#f0b446"/>
+      <circle cx="90" cy="150" r="13" fill="none" stroke="#2dc89b" stroke-width="2">
+        <animate attributeName="r" values="13;18;13" dur="3s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;0;0.7" dur="3s" begin="1s" repeatCount="indefinite"/>
+      </circle>
+      <text x="112" y="154">AGENT</text>
+    </g>
+    <g>
+      <circle cx="90" cy="195" r="13" fill="#123a2e" stroke="#2dc89b" stroke-width="2"/>
+      <circle cx="90" cy="195" r="4" fill="#f0b446"/>
+      <circle cx="90" cy="195" r="13" fill="none" stroke="#2dc89b" stroke-width="2">
+        <animate attributeName="r" values="13;18;13" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;0;0.7" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="112" y="199">TOOLS</text>
+    </g>
+    <g>
+      <circle cx="90" cy="240" r="13" fill="#123a2e" stroke="#2dc89b" stroke-width="2"/>
+      <circle cx="90" cy="240" r="4" fill="#f0b446"/>
+      <circle cx="90" cy="240" r="13" fill="none" stroke="#2dc89b" stroke-width="2">
+        <animate attributeName="r" values="13;18;13" dur="3s" begin="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;0;0.7" dur="3s" begin="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="112" y="244">SHIP</text>
+    </g>
+  </g>
+
+  <!-- ============ faint RISING ROCKET (ships motif) ============ -->
+  <!-- rocket travels up the spine on a loop, low opacity -->
+  <g opacity="0.32">
+    <g>
+      <!-- vertical translate animation: from bottom (SHIP) up past SIGNAL -->
+      <animateTransform attributeName="transform" type="translate"
+        from="0 40" to="0 -210" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="4.5s" repeatCount="indefinite"/>
+      <!-- rocket body pointing up, positioned at spine x=90, base near y=250 -->
+      <polygon points="90,222 99,244 81,244" fill="#e9f4ee"/>
+      <ellipse cx="90" cy="236" rx="6" ry="7" fill="#2dc89b"/>
+      <!-- fins -->
+      <polygon points="81,244 74,254 87,246" fill="#f0b446"/>
+      <polygon points="99,244 106,254 93,246" fill="#f0b446"/>
+      <!-- flame -->
+      <polygon points="85,246 90,262 95,246" fill="#f0b446">
+        <animate attributeName="points"
+          values="85,246 90,262 95,246; 86,246 90,256 94,246; 85,246 90,262 95,246"
+          dur="0.4s" repeatCount="indefinite"/>
+      </polygon>
+    </g>
+  </g>
+
+  <!-- floating leaves -->
+  <g fill="#178060" opacity="0.5">
+    <ellipse cx="64" cy="100" rx="7" ry="14" transform="rotate(35 64 100)"/>
+    <ellipse cx="60" cy="150" rx="6" ry="11" transform="rotate(10 60 150)"/>
+  </g>
+
+  <!-- sparks -->
+  <g stroke="#f0b446" stroke-width="2" opacity="0.85">
+    <line x1="243" y1="63" x2="257" y2="63"/>
+    <line x1="250" y1="56" x2="250" y2="70"/>
+  </g>
+  <g stroke="#2dc89b" stroke-width="2" opacity="0.7">
+    <line x1="115" y1="248" x2="125" y2="248"/>
+    <line x1="120" y1="243" x2="120" y2="253"/>
+  </g>
+
+  <!-- ============ divider ============ -->
+  <rect x="306" y="70" width="4" height="160" rx="2" fill="#2dc89b"/>
+
+  <!-- ============ RIGHT: text (no overlap) ============ -->
+  <text x="330" y="70" fill="#2dc89b" font-family="Verdana, Geneva, sans-serif" font-size="13" letter-spacing="2" font-weight="bold">OPEN TO AI / GENAI ENGINEERING ROLES</text>
+  <text x="330" y="128" fill="#eaf4ee" font-family="Georgia, 'Times New Roman', serif" font-size="46" font-weight="bold">Buddhadeb Mondal</text>
+  <text x="330" y="168" fill="#2dc89b" font-family="Verdana, Geneva, sans-serif" font-size="18" font-weight="bold">AI Engineer  &#183;  GenAI Engineer  &#183;  Senior Data Scientist</text>
+  <text x="330" y="197" fill="#9ab4a8" font-family="Verdana, Geneva, sans-serif" font-size="15">GenAI &#183; LLMs &#183; RAG &#183; Agents &#183; LangGraph &#183; MCP &#183; Production ML</text>
+
+  <!-- url pill -->
+  <g>
+    <rect x="330" y="214" width="232" height="32" rx="8" fill="#123a2e" stroke="#2dc89b" stroke-width="1"/>
+    <circle cx="348" cy="230" r="4" fill="#f0b446"/>
+    <text x="362" y="235" fill="#eaf4ee" font-family="Verdana, Geneva, sans-serif" font-size="14" font-weight="bold">buddhadeb33.github.io</text>
+  </g>
+
+  <!-- ============ RIGHT: animated agent orbit (LLM core + orbiting agents/tools) ============ -->
+  <g>
+    <!-- outer dashed ring, slow rotation -->
+    <circle cx="1085" cy="168" r="84" fill="none" stroke="#2dc89b" stroke-width="1.4" stroke-dasharray="5 9" opacity="0.5">
+      <animateTransform attributeName="transform" type="rotate" from="0 1085 168" to="360 1085 168" dur="22s" repeatCount="indefinite"/>
+    </circle>
+    <!-- inner ring, counter rotation -->
+    <circle cx="1085" cy="168" r="56" fill="none" stroke="#178060" stroke-width="1" stroke-dasharray="3 7" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" from="360 1085 168" to="0 1085 168" dur="16s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- static labels around the orbit (upright) -->
+    <g font-family="Verdana, Geneva, sans-serif" font-size="11" letter-spacing="1.5" fill="#7fbfa8" text-anchor="middle">
+      <text x="1085" y="66">AGENTS</text>
+      <text x="1006" y="252">EVALS</text>
+      <text x="1168" y="252">TOOLS &#183; MCP</text>
+    </g>
+
+    <!-- orbiting nodes -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0 1085 168" to="360 1085 168" dur="9s" repeatCount="indefinite"/>
+      <g fill="#2dc89b">
+        <circle cx="1085" cy="98" r="7"/>
+        <circle cx="1146" cy="203" r="7"/>
+        <circle cx="1024" cy="203" r="7"/>
+      </g>
+      <g fill="#f0b446">
+        <circle cx="1085" cy="98" r="3"/>
+        <circle cx="1146" cy="203" r="3"/>
+        <circle cx="1024" cy="203" r="3"/>
+      </g>
+    </g>
+
+    <!-- spokes -->
+    <g stroke="#2dc89b" stroke-width="1" opacity="0.28">
+      <line x1="1085" y1="168" x2="1085" y2="98"/>
+      <line x1="1085" y1="168" x2="1146" y2="203"/>
+      <line x1="1085" y1="168" x2="1024" y2="203"/>
+    </g>
+
+    <!-- pulsing LLM core -->
+    <circle cx="1085" cy="168" r="30" fill="#123a2e" stroke="#2dc89b" stroke-width="2"/>
+    <circle cx="1085" cy="168" r="30" fill="none" stroke="#2dc89b" stroke-width="2">
+      <animate attributeName="r" values="30;40;30" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0;0.7" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="1085" y="173" text-anchor="middle" fill="#eaf4ee" font-family="Verdana, Geneva, sans-serif" font-size="15" font-weight="bold">LLM</text>
+  </g>
+</svg>
