@@ -14,3 +14,5 @@ Saved from design exploration so the live site can match these looks.
 | `mock-skills-B-editorial.png` | Skills editorial |
 | `mock-skills-C-bento.png` | Skills bento + diagram |
 | `mock-conference-keynote.png` | Conference keynote portrait (navy blazer) |
+| `mock-conference-ambient-profile.png` | Conference stage ambience, three-quarter profile |
+| `mock-conference-ambient-focus.png` | Wide stage shot, focused mid-speech (contact bg) |

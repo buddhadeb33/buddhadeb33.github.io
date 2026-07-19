@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document AI + Grounded RAG | Buddhadeb Mondal</title>
+  <meta name="description" content="Case study: Document AI and grounded RAG for healthcare knowledge — parsing, indexing, PHI-aware retrieval, and cited answers.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://buddhadeb33.github.io/work/document-ai-rag.html">
+  <meta property="og:title" content="Document AI + Grounded RAG | Buddhadeb Mondal">
+  <meta property="og:description" content="Document AI and grounded RAG for healthcare knowledge — parsing, indexing, and cited answers.">
+  <meta property="og:url" content="https://buddhadeb33.github.io/work/document-ai-rag.html">
+  <meta property="og:image" content="https://buddhadeb33.github.io/assets/images/og-card.png">
+  <link id="favicon" rel="icon" href="../assets/images/favicon.png" type="image/png">
+  <script defer src="../assets/js/dynamicTitle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Document AI and grounded RAG",
+    "author": { "@type": "Person", "name": "Buddhadeb Mondal" },
+    "url": "https://buddhadeb33.github.io/work/document-ai-rag.html"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-wrap site-nav">
+      <a class="brand" href="../index.html">Buddha<span>.</span></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button>
+      <nav class="nav-links" data-nav-links aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../work.html">Work</a>
+        <a href="../blog/">Writing</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <input type="checkbox" id="dark_toggler" class="dark_toggler" aria-label="Toggle dark mode" title="Day / night theme" checked>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-wrap">
+    <header class="page-hero">
+      <p class="hero-kicker">Healthcare · Document AI · RAG</p>
+      <h1>Document AI + grounded RAG</h1>
+      <p>Turn policies, forms, and operational PDFs into retrieval-ready knowledge — then answer with citations, not vibes.</p>
+    </header>
+
+    <div class="stat-row">
+      <div class="stat"><strong>Domain</strong><span>Healthcare ops knowledge</span></div>
+      <div class="stat"><strong>Stack</strong><span>Document AI · RAG · GCP</span></div>
+      <div class="stat"><strong>Role</strong><span>AI / Data Science lead</span></div>
+    </div>
+
+    <article class="prose">
+      <h2>Problem</h2>
+      <p>Healthcare operations knowledge lives in PDFs, scanned forms, and shifting policy docs. Teams waste time hunting answers — and naive LLM chat invents details that cannot survive audit. The need was a path from <strong>messy documents → grounded answers</strong>.</p>
+
+      <h2>My role</h2>
+      <ul>
+        <li>Designed the document → chunk → index → retrieve → generate loop with grounding checks.</li>
+        <li>Chose parsing and chunking strategies for mixed digital/scanned healthcare artifacts.</li>
+        <li>Defined evaluation for citation fidelity and safe refusal when sources were weak.</li>
+      </ul>
+
+      <h2>Architecture (shape)</h2>
+      <ul>
+        <li><strong>Ingest</strong> — Document AI / OCR + structure extraction for forms and long policies.</li>
+        <li><strong>Index</strong> — chunking with metadata (doc type, effective date, tenant/scope) into a vector + keyword hybrid store.</li>
+        <li><strong>Retrieve</strong> — hybrid search with filters; prefer recent / authoritative sources.</li>
+        <li><strong>Generate</strong> — answer only with retrieved context; surface citations; escalate when confidence is low.</li>
+        <li><strong>Controls</strong> — PHI-aware handling, access scoping, and audit logs for prompts/retrieval hits.</li>
+      </ul>
+
+      <h2>Approach</h2>
+      <ul>
+        <li>Started with a thin vertical: one high-traffic doc class → end-to-end grounded Q&amp;A.</li>
+        <li>Tuned chunking and metadata harder than the model — retrieval quality dominated answer quality.</li>
+        <li>Built a small golden set of questions with expected sources for regression before expanding scope.</li>
+      </ul>
+
+      <h2>Trade-offs</h2>
+      <ul>
+        <li>Accepted slower answers when hybrid retrieval + citation checks improved trust.</li>
+        <li>Preferred refusal / “ask a human” over fluent hallucination on sparse docs.</li>
+        <li>Scoped first release to ops knowledge, not clinical decision support.</li>
+      </ul>
+
+      <h2>Evaluation</h2>
+      <ul>
+        <li>Citation precision: did the answer point at the right source passage?</li>
+        <li>Groundedness / contradiction rate on a held-out question set.</li>
+        <li>Time-to-answer vs prior Slack/docs search (directional, internal pilot).</li>
+      </ul>
+
+      <h2>Outcome</h2>
+      <p>A production-shaped Document AI + RAG path that made healthcare ops knowledge searchable and citable — the pattern I reuse when regulated teams need GenAI without “chat over a drive folder.”</p>
+      <ul class="metric-slots">
+        <li><strong>Groundedness:</strong> answers required retrieval hits; weak-context queries routed to escalation</li>
+        <li><strong>Pilot impact (directional):</strong> ~30–50% faster lookup for recurring ops questions vs ad-hoc doc search</li>
+        <li><strong>Trust:</strong> every answer shipped with source links for reviewer verification</li>
+      </ul>
+
+      <p><a href="../work.html">← All work</a> · <a href="../index.html#contact">Discuss a similar problem</a> · <a href="https://calendly.com/buddhadeb33/30min" target="_blank" rel="noopener">Book 30 min</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-wrap footer-inner">
+      <p>© Buddhadeb Mondal · AI Architect</p>
+    </div>
+  </footer>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
