@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="220" viewBox="0 0 720 220" role="img" aria-label="Buddha. brand logo">
+  <defs>
+    <linearGradient id="petal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3de0b0"/>
+      <stop offset="55%" stop-color="#2fd4a1"/>
+      <stop offset="100%" stop-color="#1a9a74"/>
+    </linearGradient>
+    <linearGradient id="petalSoft" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5ec4c0"/>
+      <stop offset="100%" stop-color="#2fd4a1" stop-opacity="0.55"/>
+    </linearGradient>
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0b446" stop-opacity="0.95"/>
+      <stop offset="45%" stop-color="#e8a54b" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#e8a54b" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="dotGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Artistic mark: lotus / neural seed -->
+  <g transform="translate(28, 28)">
+    <!-- outer orbit -->
+    <circle cx="82" cy="82" r="78" fill="none" stroke="#2fd4a1" stroke-width="1.2" stroke-dasharray="3 7" opacity="0.35"/>
+    <circle cx="82" cy="82" r="64" fill="none" stroke="#5ec4c0" stroke-width="1" opacity="0.22"/>
+
+    <!-- petals (3) -->
+    <g filter="url(#softGlow)">
+      <path d="M82 28 C98 48 104 68 82 88 C60 68 66 48 82 28Z" fill="url(#petal)" opacity="0.92"/>
+      <path d="M122 108 C98 118 78 112 72 88 C96 82 116 88 122 108Z" fill="url(#petalSoft)" opacity="0.88"/>
+      <path d="M42 108 C48 88 68 82 92 88 C86 112 66 118 42 108Z" fill="url(#petal)" opacity="0.78"/>
+    </g>
+
+    <!-- inner node ring -->
+    <circle cx="82" cy="86" r="18" fill="#0c1612" stroke="#2fd4a1" stroke-width="1.6"/>
+    <circle cx="82" cy="86" r="28" fill="url(#coreGlow)" opacity="0.55"/>
+    <circle cx="82" cy="86" r="7" fill="#f0b446" filter="url(#dotGlow)"/>
+
+    <!-- satellite nodes -->
+    <circle cx="82" cy="22" r="3.5" fill="#2fd4a1"/>
+    <circle cx="132" cy="112" r="3.5" fill="#5ec4c0"/>
+    <circle cx="32" cy="112" r="3.5" fill="#2fd4a1"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(210, 0)">
+    <text x="0" y="128" fill="#eaf3ee" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700" letter-spacing="-2">Buddha</text>
+    <circle cx="318" cy="118" r="11" fill="#2fd4a1" filter="url(#dotGlow)"/>
+    <!-- subtle underline accent -->
+    <rect x="2" y="148" width="88" height="3" rx="1.5" fill="#e8a54b" opacity="0.85"/>
+    <rect x="96" y="148" width="220" height="3" rx="1.5" fill="#2fd4a1" opacity="0.35"/>
+    <text x="2" y="178" fill="#8fa89a" font-family="Verdana, Geneva, sans-serif" font-size="15" letter-spacing="3.5">AI &#183; GENAI &#183; PRODUCTION ML</text>
+  </g>
+</svg>

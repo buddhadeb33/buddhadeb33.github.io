@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Buddha. mark">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1210"/>
+      <stop offset="100%" stop-color="#12201c"/>
+    </linearGradient>
+    <linearGradient id="petal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3de0b0"/>
+      <stop offset="100%" stop-color="#1a9a74"/>
+    </linearGradient>
+    <linearGradient id="petal2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5ec4c0"/>
+      <stop offset="100%" stop-color="#2fd4a1"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#2fd4a1" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#2fd4a1" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+  <rect width="256" height="256" rx="56" fill="url(#glow)"/>
+
+  <g transform="translate(40, 36)" filter="url(#g)">
+    <circle cx="88" cy="88" r="86" fill="none" stroke="#2fd4a1" stroke-width="1.4" stroke-dasharray="4 8" opacity="0.4"/>
+    <path d="M88 18 C108 42 116 68 88 96 C60 68 68 42 88 18Z" fill="url(#petal)"/>
+    <path d="M138 118 C108 130 84 122 76 94 C106 88 130 96 138 118Z" fill="url(#petal2)" opacity="0.9"/>
+    <path d="M38 118 C46 94 70 86 100 94 C92 122 68 130 38 118Z" fill="url(#petal)" opacity="0.8"/>
+    <circle cx="88" cy="94" r="22" fill="#0c1612" stroke="#2fd4a1" stroke-width="2"/>
+    <circle cx="88" cy="94" r="8" fill="#f0b446"/>
+    <circle cx="88" cy="14" r="4" fill="#2fd4a1"/>
+    <circle cx="150" cy="122" r="4" fill="#5ec4c0"/>
+    <circle cx="26" cy="122" r="4" fill="#2fd4a1"/>
+  </g>
+
+  <!-- signature period under mark -->
+  <circle cx="128" cy="228" r="5" fill="#2fd4a1"/>
+</svg>

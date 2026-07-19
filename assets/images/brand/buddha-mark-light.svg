@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Buddha. mark light">
+  <defs>
+    <linearGradient id="bgL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7fbf9"/>
+      <stop offset="100%" stop-color="#e7f0eb"/>
+    </linearGradient>
+    <linearGradient id="petalL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14b884"/>
+      <stop offset="100%" stop-color="#0a6b4e"/>
+    </linearGradient>
+    <linearGradient id="petal2L" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f7a76"/>
+      <stop offset="100%" stop-color="#0d8f68"/>
+    </linearGradient>
+    <filter id="gL" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="256" height="256" rx="56" fill="url(#bgL)" stroke="#0d8f68" stroke-width="2" stroke-opacity="0.18"/>
+
+  <g transform="translate(40, 36)" filter="url(#gL)">
+    <circle cx="88" cy="88" r="86" fill="none" stroke="#0d8f68" stroke-width="1.4" stroke-dasharray="4 8" opacity="0.28"/>
+    <path d="M88 18 C108 42 116 68 88 96 C60 68 68 42 88 18Z" fill="url(#petalL)"/>
+    <path d="M138 118 C108 130 84 122 76 94 C106 88 130 96 138 118Z" fill="url(#petal2L)" opacity="0.9"/>
+    <path d="M38 118 C46 94 70 86 100 94 C92 122 68 130 38 118Z" fill="url(#petalL)" opacity="0.8"/>
+    <circle cx="88" cy="94" r="22" fill="#ffffff" stroke="#0d8f68" stroke-width="2"/>
+    <circle cx="88" cy="94" r="8" fill="#c47a1a"/>
+    <circle cx="88" cy="14" r="4" fill="#0d8f68"/>
+    <circle cx="150" cy="122" r="4" fill="#0f7a76"/>
+    <circle cx="26" cy="122" r="4" fill="#0d8f68"/>
+  </g>
+
+  <circle cx="128" cy="228" r="5" fill="#0d8f68"/>
+</svg>

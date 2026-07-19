@@ -179,15 +179,40 @@ a {
 }
 
 .brand {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  transition: color 0.25s var(--ease), text-shadow 0.25s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+  border-radius: 12px;
+  transition: transform 0.25s var(--ease), filter 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
 .brand:hover {
-  text-shadow: 0 0 24px color-mix(in srgb, var(--accent) 35%, transparent);
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 0 28px color-mix(in srgb, #b57bff 28%, transparent);
+}
+
+.brand-logo {
+  display: block;
+  height: 56px;
+  width: auto;
+  max-width: min(220px, 48vw);
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* Dual theme logo swap */
+.brand-logo-light {
+  display: none;
+}
+
+html[data-theme="light"] .brand-logo-dark {
+  display: none;
+}
+
+html[data-theme="light"] .brand-logo-light {
+  display: block;
 }
 
 .brand span {
@@ -603,7 +628,11 @@ html[data-theme="light"] .nav-links {
 
   .brand {
     order: 1;
-    font-size: 1.35rem;
+  }
+
+  .brand-logo {
+    height: 48px;
+    max-width: min(180px, 52vw);
   }
 
   .nav-links {
@@ -1058,6 +1087,11 @@ html[data-theme="light"] .nav-links {
     animation: none;
   }
   .diagram-halo { opacity: 0; }
+  .brand,
+  .brand:hover {
+    transform: none;
+    transition: none;
+  }
 }
 
 .hero-visual {
