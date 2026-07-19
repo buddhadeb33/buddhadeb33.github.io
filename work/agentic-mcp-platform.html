@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic AI with MCP &amp; ADK | Buddhadeb Mondal</title>
+  <meta name="description" content="Case study: multi-tool agent architecture using MCP, Google ADK, and Vertex Agent Engine — traceable tools, guardrails, and production ops.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://buddhadeb33.github.io/work/agentic-mcp-platform.html">
+  <meta property="og:title" content="Agentic AI with MCP &amp; ADK | Buddhadeb Mondal">
+  <meta property="og:description" content="Multi-tool agent architecture with MCP, Google ADK, and Vertex — operable agents, not demo chatbots.">
+  <meta property="og:url" content="https://buddhadeb33.github.io/work/agentic-mcp-platform.html">
+  <meta property="og:image" content="https://buddhadeb33.github.io/assets/images/og-card.png">
+  <link id="favicon" rel="icon" href="../assets/images/favicon.png" type="image/png">
+  <script defer src="../assets/js/dynamicTitle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Agentic AI with MCP and ADK",
+    "author": { "@type": "Person", "name": "Buddhadeb Mondal" },
+    "url": "https://buddhadeb33.github.io/work/agentic-mcp-platform.html"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-wrap site-nav">
+      <a class="brand" href="../index.html">Buddha<span>.</span></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button>
+      <nav class="nav-links" data-nav-links aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../work.html">Work</a>
+        <a href="../blog/">Writing</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <input type="checkbox" id="dark_toggler" class="dark_toggler" aria-label="Toggle dark mode" title="Day / night theme" checked>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-wrap">
+    <header class="page-hero">
+      <p class="hero-kicker">Platform · Agents · MCP · ADK</p>
+      <h1>Agentic AI with MCP &amp; ADK</h1>
+      <p>Design agents that call real tools safely — Model Context Protocol, Google ADK orchestration, and Vertex paths that ops can run.</p>
+    </header>
+
+    <div class="stat-row">
+      <div class="stat"><strong>Domain</strong><span>GenAI platform</span></div>
+      <div class="stat"><strong>Stack</strong><span>ADK · MCP · Vertex</span></div>
+      <div class="stat"><strong>Role</strong><span>AI Architect</span></div>
+    </div>
+
+    <article class="prose">
+      <h2>Problem</h2>
+      <p>Teams want agents that <strong>do work</strong> — query systems, draft from tools, trigger workflows — but most prototypes hide tool failures, lack RBAC, and cannot be debugged in production. The goal was an agent architecture that is <strong>composable, observable, and constrained</strong>.</p>
+
+      <h2>My role</h2>
+      <ul>
+        <li>Framed agent vs workflow vs plain RAG — when tool-calling is worth the complexity.</li>
+        <li>Designed MCP tool boundaries (what the model can call, with what auth and side effects).</li>
+        <li>Shaped ADK / Vertex Agent Engine deployment, eval hooks, and human-in-the-loop gates.</li>
+      </ul>
+
+      <h2>Architecture (shape)</h2>
+      <ul>
+        <li><strong>Orchestrator</strong> — Google ADK-style agent loop: plan → tool call → observe → respond.</li>
+        <li><strong>Tools via MCP</strong> — typed tools (search, tickets, docs, internal APIs) with least-privilege credentials.</li>
+        <li><strong>Runtime</strong> — Vertex Agent Engine / Cloud Run for scalable, inspectable execution.</li>
+        <li><strong>Guardrails</strong> — allow-lists, confirmation for write actions, PII/PHI redaction where needed.</li>
+        <li><strong>Observability</strong> — traces for every tool call, latency, and failure reason.</li>
+      </ul>
+
+      <h2>Approach</h2>
+      <ul>
+        <li>Started with read-only tools; unlocked writes only after confirmation UX and audit logging.</li>
+        <li>Kept prompts thin — quality came from tool contracts and retrieval, not megaprompts.</li>
+        <li>Eval suite: task success, unsafe-action rate, and cost/latency budgets per session.</li>
+      </ul>
+
+      <h2>Trade-offs</h2>
+      <ul>
+        <li>Fewer tools beat a kitchen-sink toolbox — narrower surface, clearer ownership.</li>
+        <li>Human confirmation on mutating actions reduced autonomy demos but raised trust.</li>
+        <li>MCP indirection added a layer, but made tools reusable across agents and clients.</li>
+      </ul>
+
+      <h2>Evaluation</h2>
+      <ul>
+        <li>Task completion on a fixed scenario pack (search → synthesize → propose action).</li>
+        <li>Tool-error recovery: does the agent retry, explain, or escalate cleanly?</li>
+        <li>Cost and p95 latency under concurrent sessions on Cloud Run / Agent Engine.</li>
+      </ul>
+
+      <h2>Outcome</h2>
+      <p>An agent platform pattern I apply for GenAI products that need real system access: MCP tools, ADK orchestration, Vertex runtime, and ops-grade traces — closer to software architecture than chatbot theater.</p>
+      <ul class="metric-slots">
+        <li><strong>Safety:</strong> mutating tools gated behind explicit confirmation + audit trail</li>
+        <li><strong>Operability:</strong> end-to-end traces for prompt → tool → response debugging</li>
+        <li><strong>Reuse:</strong> MCP tools shared across agents instead of one-off function glue</li>
+      </ul>
+
+      <p><a href="../work.html">← All work</a> · <a href="../index.html#contact">Discuss a similar problem</a> · <a href="https://calendly.com/buddhadeb33/30min" target="_blank" rel="noopener">Book 30 min</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-wrap footer-inner">
+      <p>© Buddhadeb Mondal · AI Architect</p>
+    </div>
+  </footer>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

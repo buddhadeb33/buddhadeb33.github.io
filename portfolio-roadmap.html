@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio roadmap | Buddhadeb Mondal</title>
+  <meta name="description" content="Gaps vs a top-grade AI Architect portfolio — what is done, what needs Buddha, and the next five actions.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://buddhadeb33.github.io/portfolio-roadmap.html">
+  <meta property="og:title" content="Portfolio roadmap | Buddhadeb Mondal">
+  <meta property="og:description" content="Gaps vs a top-grade AI Architect portfolio — status and next actions.">
+  <meta property="og:url" content="https://buddhadeb33.github.io/portfolio-roadmap.html">
+  <meta property="og:image" content="https://buddhadeb33.github.io/assets/images/og-card.svg">
+  <link id="favicon" rel="icon" href="assets/images/favicon.png" type="image/png">
+  <script defer src="assets/js/dynamicTitle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="site-wrap site-nav">
+      <a class="brand" href="index.html">Buddha<span>.</span></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button>
+      <nav class="nav-links" data-nav-links aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="work.html">Work</a>
+        <a href="blog/">Writing</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <input type="checkbox" id="dark_toggler" class="dark_toggler" aria-label="Toggle dark mode" title="Day / night theme" checked>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="site-wrap">
+    <header class="page-hero">
+      <p class="hero-kicker">Site quality</p>
+      <h1>Portfolio roadmap</h1>
+      <p>What a top-grade AI Architect portfolio needs — and status on this site. Source: <a href="portfolio-roadmap.md">portfolio-roadmap.md</a>.</p>
+    </header>
+    <article class="prose roadmap-prose" id="roadmap-content" aria-busy="true">
+      <p class="ink-muted">Loading roadmap…</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-wrap footer-inner">
+      <p>© Buddhadeb Mondal · AI Architect</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" crossorigin="anonymous"></script>
+  <script>
+    (function () {
+      var el = document.getElementById("roadmap-content");
+      fetch("portfolio-roadmap.md", { cache: "no-cache" })
+        .then(function (r) {
+          if (!r.ok) throw new Error("Could not load roadmap");
+          return r.text();
+        })
+        .then(function (md) {
+          el.innerHTML = marked.parse(md);
+          el.removeAttribute("aria-busy");
+        })
+        .catch(function () {
+          el.innerHTML =
+            '<p>Could not load <code>portfolio-roadmap.md</code>. Open the <a href="portfolio-roadmap.md">markdown file</a> directly.</p>';
+          el.removeAttribute("aria-busy");
+        });
+    })();
+  </script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

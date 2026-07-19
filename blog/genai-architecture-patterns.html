@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenAI Architecture Patterns That Hold Up | Buddhadeb Mondal</title>
+  <meta name="description" content="GenAI architecture patterns for production: separate retrieval, reasoning, and orchestration — without overbuilding your LLM stack.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://buddhadeb33.github.io/blog/genai-architecture-patterns.html">
+  <meta property="og:title" content="GenAI Architecture Patterns That Hold Up">
+  <meta property="og:description" content="Separate retrieval, reasoning, and orchestration — without overbuilding your LLM stack.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://buddhadeb33.github.io/blog/genai-architecture-patterns.html">
+  <link id="favicon" rel="icon" href="../assets/images/favicon.png" type="image/png">
+  <script defer src="../assets/js/dynamicTitle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "GenAI architecture patterns that hold up",
+    "datePublished": "2026-06-15",
+    "author": { "@type": "Person", "name": "Buddhadeb Mondal", "url": "https://buddhadeb33.github.io/" },
+    "url": "https://buddhadeb33.github.io/blog/genai-architecture-patterns.html"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-wrap site-nav">
+      <a class="brand" href="../index.html">Buddha<span>.</span></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button>
+      <nav class="nav-links" data-nav-links aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../work.html">Work</a>
+        <a href="./">Writing</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <input type="checkbox" id="dark_toggler" class="dark_toggler" aria-label="Toggle dark mode" title="Day / night theme" checked>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-wrap">
+    <header class="page-hero">
+      <p class="hero-kicker">Jun 2026 · Architecture</p>
+      <h1>GenAI architecture patterns that hold up</h1>
+      <p>A compact mental model for AI Architects: keep retrieval, reasoning, and orchestration separable so you can change one without burning the others.</p>
+    </header>
+
+    <article class="prose">
+      <h2>Pattern 1: Retrieval as a product surface</h2>
+      <p>Treat the index, chunking strategy, and access policy as a product with owners — not a side effect of the prompt. When retrieval is wrong, generation will confidently amplify the mistake.</p>
+
+      <h2>Pattern 2: Thin agents, thick tools</h2>
+      <p>Prefer a small orchestration layer that calls well-defined tools (search, calculators, internal APIs) over a sprawling multi-agent graph you cannot debug. Add agents when a workflow truly needs them.</p>
+
+      <h2>Pattern 3: Evaluation before ornamentation</h2>
+      <p>UI polish and model upgrades feel productive. An offline eval set of real user questions feels boring — and is usually the difference between a launch and a rollback.</p>
+
+      <h2>Pattern 4: Cost and latency as architecture</h2>
+      <p>Caching, routing (small vs large models), and batching are design decisions. If you only discover them in the cloud bill, the architecture was incomplete.</p>
+
+      <h2>What to avoid</h2>
+      <ul>
+        <li>One mega-prompt that encodes policy, tools, and tone.</li>
+        <li>Framework lock-in before you understand your failure modes.</li>
+        <li>Shipping without an owner for quality after week one.</li>
+      </ul>
+
+      <p><a href="./">← All writing</a> · <a href="../index.html#contact">Talk architecture</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-wrap footer-inner">
+      <p>© Buddhadeb Mondal · AI Architect</p>
+    </div>
+  </footer>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

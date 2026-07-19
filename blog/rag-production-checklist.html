@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Practical RAG Production Checklist | Buddhadeb Mondal</title>
+  <meta name="description" content="A practical checklist for shipping retrieval-augmented generation (RAG) to production — data, retrieval quality, evaluation, monitoring, and ownership.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://buddhadeb33.github.io/blog/rag-production-checklist.html">
+  <meta property="og:title" content="A Practical RAG Production Checklist">
+  <meta property="og:description" content="What to verify before a retrieval-augmented GenAI feature goes live.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://buddhadeb33.github.io/blog/rag-production-checklist.html">
+  <link id="favicon" rel="icon" href="../assets/images/favicon.png" type="image/png">
+  <script defer src="../assets/js/dynamicTitle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "A practical RAG production checklist",
+    "datePublished": "2026-07-01",
+    "author": { "@type": "Person", "name": "Buddhadeb Mondal", "url": "https://buddhadeb33.github.io/" },
+    "url": "https://buddhadeb33.github.io/blog/rag-production-checklist.html"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-wrap site-nav">
+      <a class="brand" href="../index.html">Buddha<span>.</span></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button>
+      <nav class="nav-links" data-nav-links aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../work.html">Work</a>
+        <a href="./">Writing</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <input type="checkbox" id="dark_toggler" class="dark_toggler" aria-label="Toggle dark mode" title="Day / night theme" checked>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-wrap">
+    <header class="page-hero">
+      <p class="hero-kicker">Jul 2026 · GenAI · RAG</p>
+      <h1>A practical RAG production checklist</h1>
+      <p>Use this before you call a retrieval-augmented feature “done.” Written for AI Architects and engineering leads shipping LLMs in the real world.</p>
+    </header>
+
+    <article class="prose">
+      <h2>1. Corpus and freshness</h2>
+      <ul>
+        <li>Who owns source documents, and how do updates reach the index?</li>
+        <li>Are access controls preserved through chunking and retrieval?</li>
+        <li>Do you know stale-data failure modes for your domain?</li>
+      </ul>
+
+      <h2>2. Retrieval quality</h2>
+      <ul>
+        <li>Golden questions with expected passages — not only vibe checks.</li>
+        <li>Hybrid search when keywords and semantics both matter.</li>
+        <li>Citation UX so users (and auditors) can verify answers.</li>
+      </ul>
+
+      <h2>3. Generation and safety</h2>
+      <ul>
+        <li>Clear “I don’t know” behavior when retrieval is weak.</li>
+        <li>Prompt and tool boundaries for regulated domains (health, finance).</li>
+        <li>Latency and cost budgets under realistic concurrency.</li>
+      </ul>
+
+      <h2>4. Evaluation and monitoring</h2>
+      <ul>
+        <li>Offline eval set plus online feedback loop.</li>
+        <li>Logging of queries, retrieved docs, and refusals (with privacy review).</li>
+        <li>Owner on-call when quality drifts after a content or model change.</li>
+      </ul>
+
+      <h2>5. Ownership</h2>
+      <p>If nobody owns corpus freshness, retrieval quality, and incident response, you do not have a production RAG system — you have a demo with a longer timeout.</p>
+
+      <p><a href="./">← All writing</a> · <a href="../index.html#contact">Work with me on RAG systems</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-wrap footer-inner">
+      <p>© Buddhadeb Mondal · AI Architect</p>
+    </div>
+  </footer>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

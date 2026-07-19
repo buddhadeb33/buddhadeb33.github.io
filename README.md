@@ -1,59 +1,73 @@
-<h1 align="center">
-  Visit my My Portfolio<br/>
-  <a href="http://buddhadeb33.github.io/" target="_blank">http://buddhadeb33.github.io/</a>
-</h1>
+# Buddhadeb Mondal — Portfolio
 
-<div align="center">
-  <p align="center">
-    Welcome to my personal portfolio! This is a showcase of my journey, skills, and projects in the world of technology and development. Here, you'll find a collection of my work, ranging from web development and programming to creative design and problem-solving. Feel free to explore and get to know more about me and my capabilities.
-  </p>
-  
-  <p align="center">
-    <img src="assets/images/buddha_main_page.jpg" alt="Buddhadeb Mondal" width="150" height="150" />
-  </p>
-</div>
+Personal site for **Buddhadeb Mondal**, AI Architect.
 
-<br/>
+**Live:** [https://buddhadeb33.github.io/](https://buddhadeb33.github.io/)
 
-<div align="center">
-  <h2>About Me</h2>
-  <p>
-    Hi there! I'm Mr. Mondal, a passionate Data Scientist with a deep interest in ML & DL domain. My journey in the world of technology started in programming and since then, I've been on an exciting learning adventure. I believe in the power of innovation and creativity to solve real-world problems, and I'm dedicated to contributing positively to the tech community.
-  </p>
-</div>
+## Local preview
 
-<br/>
+```bash
+cd buddhadeb33.github.io
+python3 -m http.server 8000
+```
 
-<div align="center">
-  <h2>Skills</h2>
-  <p>
-    Throughout my journey, I've acquired a versatile skill set that includes Machine Learning Algorithms, Deep Learning Frameworks (TensorFlow, PyTorch, Keras), Natural Language Processing (NLP), Computer Vision, Data Preprocessing, Model Evaluation and Hyperparameter Tuning, Unsupervised Learning, Reinforcement Learning, Data Visualization (Matplotlib, Seaborn, Plotly), Deployment and Productionization (Docker, cloud services, APIs), AI Ethics and Bias Mitigation, Version Control (Git), Mathematical Fundamentals (linear algebra, calculus, probability, statistics).
-I'm always eager to learn new technologies and expand my expertise to stay up-to-date with the ever-evolving tech landscape.
-  </p>
-</div>
+Open [http://localhost:8000](http://localhost:8000).
 
-<br/>
+## Site map
 
+| Path | Purpose |
+|------|---------|
+| `index.html` | Homepage — hire-me funnel |
+| `work.html` + `work/` | Case studies |
+| `blog/` | Writing (SEO) |
+| `about.html` | Bio + references (merged) |
+| `resume.html` | Resume (print/PDF) |
+| `portfolio-roadmap.md` | Gaps vs top-grade portfolio (source) |
+| `portfolio-roadmap.html` | On-site viewer for the roadmap |
+| `robots.txt` / `sitemap.xml` | Search indexing |
 
-<br/>
+Drop your PDF at `assets/resume/Buddhadeb_Mondal_Resume.pdf` so the Download PDF button works.
 
-<div align="center">
-  <h2>Contact Me</h2>
-  <p>
-    I'm always open to new opportunities, collaborations, and conversations. If you'd like to get in touch, feel free to connect with me via [Email](mailto:buddhadeb33@gmail.com) or on [LinkedIn](https://www.linkedin.com/in/buddhadeb33/). Let's chat and explore how we can work together!
-  </p>
-</div>
+See **[portfolio-roadmap.md](portfolio-roadmap.md)** (or [/portfolio-roadmap.html](https://buddhadeb33.github.io/portfolio-roadmap.html)) for what still needs your metrics, WhatsApp, Calendly, etc.
 
-<br/>
+## Discoverability checklist (hire-me)
 
-<div align="center">
-  <p>
-    Thank you for visiting my portfolio. I'm excited to share my journey with you and continue growing in the world of technology. Don't hesitate to reach out, and let's create something amazing!
-  </p>
-</div>
+Do these after you push to GitHub Pages:
 
-<br/>
+### Google Search Console
 
-<center>
-  &copy; 2023 -- Buddhadeb Mondal
-</center>
+1. Go to [Google Search Console](https://search.google.com/search-console)
+2. Add property: `https://buddhadeb33.github.io/`
+3. Verify ownership (HTML tag or DNS)
+4. Submit sitemap: `https://buddhadeb33.github.io/sitemap.xml`
+5. Use URL Inspection on the homepage and one case study
+
+### LinkedIn (fastest hire traffic)
+
+1. Headline example: `AI Architect | GenAI · LLMs · RAG | IIT Hyderabad`
+2. Featured → add link to `https://buddhadeb33.github.io/`
+3. About section → short pitch + link to Work and Contact
+4. Pin 1–2 posts that link to a case study or blog post
+5. Keep experience dates aligned with the site
+
+### Content distribution
+
+- Cross-post blog articles to Medium with **canonical URL** set to your `buddhadeb33.github.io` post
+- Share case studies when you change roles or ship something public
+- Optional later: custom domain (stronger brand for hiring)
+
+### Contact
+
+- Email: buddhadeb33@gmail.com
+- Calendly: [calendly.com/buddhadeb33/30min](https://calendly.com/buddhadeb33/30min)
+- WhatsApp: [wa.me/917501385296](https://wa.me/917501385296)
+- Form on homepage uses Formcarry (existing endpoint)
+- LinkedIn: [linkedin.com/in/buddhadeb33](https://www.linkedin.com/in/buddhadeb33)
+
+## Design notes
+
+Static HTML/CSS/JS (no build step). Visual system in `assets/css/site.css`. Particles, dual Bootstrap nav, and template SEO copy were removed in favor of a compact editorial layout.
+
+## Archive
+
+The previous portfolio (particles / Bootstrap template) is preserved under [`archive/pre-redesign/`](archive/pre-redesign/). See [`archive/README.md`](archive/README.md) to preview it on another port.

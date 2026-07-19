@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Buddhadeb Mondal  AI Architect">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1210"/>
+      <stop offset="55%" stop-color="#121a17"/>
+      <stop offset="100%" stop-color="#18221e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="15%" cy="0%" r="55%">
+      <stop offset="0%" stop-color="#3dba8c" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#3dba8c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="90%" cy="10%" r="45%">
+      <stop offset="0%" stop-color="#e8a54b" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#e8a54b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <text x="80" y="210" fill="#3dba8c" font-family="Georgia, serif" font-size="36" letter-spacing="4">AI ARCHITECT</text>
+  <text x="80" y="310" fill="#e8f0eb" font-family="Georgia, serif" font-size="72" font-weight="700">Buddhadeb Mondal</text>
+  <text x="80" y="390" fill="#9aafa3" font-family="Segoe UI, sans-serif" font-size="32">GenAI · LLMs · RAG · Production ML</text>
+  <text x="80" y="540" fill="#5ec4c0" font-family="Segoe UI, sans-serif" font-size="24">buddhadeb33.github.io</text>
+</svg>

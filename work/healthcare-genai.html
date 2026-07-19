@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare GenAI &amp; Agentic Workflows | Buddhadeb Mondal</title>
+  <meta name="description" content="Case study: designing production-oriented Generative AI and agentic workflows for healthcare at LightSpun — RAG, grounding, and safe LLM assistance.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://buddhadeb33.github.io/work/healthcare-genai.html">
+  <meta property="og:title" content="Healthcare GenAI &amp; Agentic Workflows | Buddhadeb Mondal">
+  <meta property="og:description" content="Production-oriented Generative AI and agentic workflows for healthcare — RAG, grounding, and safe LLM assistance.">
+  <meta property="og:url" content="https://buddhadeb33.github.io/work/healthcare-genai.html">
+  <meta property="og:image" content="https://buddhadeb33.github.io/assets/images/og-card.png">
+  <link id="favicon" rel="icon" href="../assets/images/favicon.png" type="image/png">
+  <script defer src="../assets/js/dynamicTitle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Healthcare GenAI and agentic workflows",
+    "author": { "@type": "Person", "name": "Buddhadeb Mondal" },
+    "url": "https://buddhadeb33.github.io/work/healthcare-genai.html"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-wrap site-nav">
+      <a class="brand" href="../index.html">Buddha<span>.</span></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button>
+      <nav class="nav-links" data-nav-links aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="../work.html">Work</a>
+        <a href="../blog/">Writing</a>
+        <a href="../about.html">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <input type="checkbox" id="dark_toggler" class="dark_toggler" aria-label="Toggle dark mode" title="Day / night theme" checked>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-wrap">
+    <header class="page-hero">
+      <p class="hero-kicker">LightSpun · Senior Data Scientist</p>
+      <h1>Healthcare GenAI &amp; agentic workflows</h1>
+      <p>Building retrieval-aware Generative AI that respects clinical and operational constraints — not chatbot demos.</p>
+    </header>
+
+    <div class="stat-row">
+      <div class="stat"><strong>Domain</strong><span>Healthcare AI</span></div>
+      <div class="stat"><strong>Stack</strong><span>LLMs · RAG · Agents</span></div>
+      <div class="stat"><strong>Role</strong><span>Senior Data Scientist</span></div>
+    </div>
+
+    <article class="prose">
+      <h2>Problem</h2>
+      <p>Healthcare teams need faster access to knowledge and assisted workflows, but unconstrained LLMs invent facts, ignore policy, and fail audits. The challenge was to design GenAI that is <strong>grounded, reviewable, and operable</strong> in a regulated setting.</p>
+
+      <h2>My role</h2>
+      <ul>
+        <li>Owned GenAI / agentic workflow design for selected product use cases.</li>
+        <li>Partnered with product and domain stakeholders on evaluation criteria and human-in-the-loop checkpoints.</li>
+        <li>Shaped retrieval, tool-use, and safety patterns so demos could become operable features.</li>
+      </ul>
+
+      <h2>Architecture (shape)</h2>
+      <ul>
+        <li><strong>Retrieval first</strong> — answers and actions tied to approved sources, not open-ended generation.</li>
+        <li><strong>Agent / tool layer</strong> — constrained tools for workflow steps; explicit handoffs for review.</li>
+        <li><strong>Guardrails</strong> — policy-aware prompts, grounding checks, and escalation paths for low-confidence outputs.</li>
+        <li><strong>Observability</strong> — traces for prompts, retrieval hits, and failures so operators can debug production behavior.</li>
+      </ul>
+
+      <h2>Approach</h2>
+      <ul>
+        <li>Framed use cases around retrieval and tool use, not open-ended chat.</li>
+        <li>Designed RAG and agentic patterns with explicit sources and human-in-the-loop checkpoints.</li>
+        <li>Iterated evaluation against real workflows, not generic LLM benchmarks alone.</li>
+      </ul>
+
+      <h2>Trade-offs</h2>
+      <ul>
+        <li>Preferred narrower, auditable assistants over broad chat — lower “wow,” higher trust.</li>
+        <li>Accepted extra latency from retrieval / checks when it improved grounding.</li>
+        <li>Kept humans in the loop for high-impact actions instead of full autonomy.</li>
+      </ul>
+
+      <h2>Evaluation</h2>
+      <ul>
+        <li>Groundedness / citation fidelity against source corpora.</li>
+        <li>Workflow success with domain reviewers (not only offline NLP scores).</li>
+        <li>Failure modes: refusal quality, escalation, and safe degradation.</li>
+      </ul>
+
+      <h2>Outcome</h2>
+      <p>Delivered production-oriented GenAI capabilities that improved knowledge access and assisted operations while keeping safety and grounding first-class.</p>
+      <ul class="metric-slots">
+        <li><strong>Metric slot:</strong> e.g. grounded answer rate / human override rate — <em>fill when shareable</em></li>
+        <li><strong>Metric slot:</strong> e.g. time-to-answer for a known workflow — <em>fill when shareable</em></li>
+        <li><strong>NDA:</strong> Exact client metrics available in conversation under NDA.</li>
+      </ul>
+
+      <p><a href="../work.html">← All work</a> · <a href="../index.html#contact">Discuss a similar problem</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-wrap footer-inner">
+      <p>© Buddhadeb Mondal · AI Architect</p>
+    </div>
+  </footer>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
