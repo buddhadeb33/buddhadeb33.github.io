@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Interval Beep</title>
+  <style>
+    :root {
+      --bg: #12110f;
+      --ink: #f4efe6;
+      --muted: #9a9286;
+      --line: #2a2824;
+      --done: #5f8f6a;
+      --now: #e8c46a;
+      --btn: #f4efe6;
+      --btn-ink: #161513;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 20px 40px;
+      gap: 28px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .clock {
+      font-variant-numeric: tabular-nums;
+      font-size: clamp(64px, 18vw, 128px);
+      font-weight: 560;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .status {
+      min-height: 1.4em;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .status.done { color: var(--done); }
+    ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      max-width: 420px;
+    }
+    li {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    li.done { color: var(--done); border-color: #2e4a34; }
+    li.now { color: var(--now); border-color: #6b5724; }
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--btn);
+      color: var(--btn-ink);
+    }
+    button.ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+    button:disabled { opacity: 0.35; cursor: default; }
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 360px;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+  <h1>Interval beep</h1>
+  <div class="clock" id="clock">02:00</div>
+  <div class="status" id="status">Ready · 36 min total</div>
+  <ol id="steps"></ol>
+  <div class="row">
+    <button id="start" type="button">Start</button>
+    <button id="pause" class="ghost" type="button" disabled>Pause</button>
+    <button id="reset" class="ghost" type="button">Reset</button>
+    <button id="testSound" class="ghost" type="button">Test sound</button>
+  </div>
+  <p class="hint" id="hint">Keep this tab open. The phone or laptop should not sleep. Use headphones if you need it louder.</p>
+
+  <script>
+    const TEST = new URLSearchParams(location.search).has("test");
+    const UNIT = TEST ? 1000 : 60 * 1000;
+    const MINUTES = [2, 2, 2, 7, 10, 6, 7];
+    const DURATIONS = MINUTES.map((m) => m * UNIT);
+
+    const clockEl = document.getElementById("clock");
+    const statusEl = document.getElementById("status");
+    const stepsEl = document.getElementById("steps");
+    const startBtn = document.getElementById("start");
+    const pauseBtn = document.getElementById("pause");
+    const resetBtn = document.getElementById("reset");
+    const testSoundBtn = document.getElementById("testSound");
+    const hintEl = document.getElementById("hint");
+
+    if (TEST) hintEl.textContent = "Test mode: each “minute” is 1 second.";
+
+    let audioCtx = null;
+    let wakeLock = null;
+    let index = 0;
+    let remaining = DURATIONS[0];
+    let running = false;
+    let endsAt = 0;
+    let timerId = 0;
+
+    function fmt(ms) {
+      const total = Math.max(0, Math.ceil(ms / 1000));
+      const m = Math.floor(total / 60);
+      const s = total % 60;
+      return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+    }
+
+    function ensureAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      return audioCtx;
+    }
+
+    function strike(ctx, dest, when) {
+      const seconds = 0.09;
+      const frames = Math.floor(ctx.sampleRate * seconds);
+      const buffer = ctx.createBuffer(1, frames, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < frames; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (frames * 0.12));
+      }
+      const src = ctx.createBufferSource();
+      src.buffer = buffer;
+      const bp = ctx.createBiquadFilter();
+      bp.type = "bandpass";
+      bp.frequency.value = 380;
+      bp.Q.value = 3.2;
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0.045, when);
+      g.gain.exponentialRampToValueAtTime(0.0001, when + 0.14);
+      src.connect(bp);
+      bp.connect(g);
+      g.connect(dest);
+      src.start(when);
+      src.stop(when + 0.16);
+    }
+
+    function partial(ctx, dest, freq, when, duration, gain) {
+      const osc = ctx.createOscillator();
+      const filter = ctx.createBiquadFilter();
+      const g = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, when);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.988, when + duration);
+      filter.type = "lowpass";
+      filter.frequency.setValueAtTime(Math.min(1800, freq * 5), when);
+      filter.frequency.exponentialRampToValueAtTime(Math.max(220, freq * 1.6), when + duration);
+      g.gain.setValueAtTime(0.0001, when);
+      g.gain.exponentialRampToValueAtTime(gain, when + 0.05);
+      g.gain.exponentialRampToValueAtTime(gain * 0.28, when + duration * 0.35);
+      g.gain.exponentialRampToValueAtTime(0.0001, when + duration);
+      osc.connect(filter);
+      filter.connect(g);
+      g.connect(dest);
+      osc.start(when);
+      osc.stop(when + duration + 0.05);
+    }
+
+    function bowl(ctx, dest, fundamental, when, duration, level) {
+      strike(ctx, dest, when);
+      // Inharmonic singing-bowl partials, not a harsh equal-tempered beep.
+      const ratios = [1, 2.76, 4.94, 7.41];
+      const gains = [0.16, 0.07, 0.028, 0.012];
+      ratios.forEach((ratio, i) => {
+        partial(ctx, dest, fundamental * ratio, when, duration + i * 0.2, gains[i] * level);
+      });
+    }
+
+    function beep(final = false) {
+      const ctx = ensureAudio();
+      const dest = ctx.destination;
+      const t = ctx.currentTime;
+      bowl(ctx, dest, 196, t, final ? 4.4 : 3.4, 1);
+      if (final) bowl(ctx, dest, 293.66, t + 1.05, 4.2, 0.72);
+      if (navigator.vibrate) navigator.vibrate(final ? [24, 90, 24] : [18]);
+    }
+
+    async function lockScreen() {
+      try {
+        if (navigator.wakeLock) wakeLock = await navigator.wakeLock.request("screen");
+      } catch (_) {}
+    }
+
+    async function unlockScreen() {
+      try {
+        await wakeLock?.release();
+      } catch (_) {}
+      wakeLock = null;
+    }
+
+    function render() {
+      clockEl.textContent = fmt(remaining);
+      stepsEl.innerHTML = MINUTES.map((m, i) => {
+        const cls = i < index ? "done" : i === index && running ? "now" : "";
+        return `<li class="${cls}">${m} min</li>`;
+      }).join("");
+
+      if (index >= MINUTES.length) {
+        statusEl.textContent = "Done";
+        statusEl.classList.add("done");
+      } else if (running) {
+        statusEl.textContent = `Interval ${index + 1} of ${MINUTES.length} · ${MINUTES[index]} min`;
+        statusEl.classList.remove("done");
+      } else if (index === 0 && remaining === DURATIONS[0]) {
+        statusEl.textContent = TEST ? "Ready · test mode" : "Ready · 36 min total";
+        statusEl.classList.remove("done");
+      } else {
+        statusEl.textContent = "Paused";
+        statusEl.classList.remove("done");
+      }
+
+      startBtn.disabled = running || index >= MINUTES.length;
+      pauseBtn.disabled = !running;
+    }
+
+    function finish() {
+      remaining = 0;
+      running = false;
+      clearInterval(timerId);
+      unlockScreen();
+      render();
+    }
+
+    function advancePast(overdueMs) {
+      beep(index === MINUTES.length - 1);
+      index += 1;
+      while (index < MINUTES.length && overdueMs >= DURATIONS[index]) {
+        overdueMs -= DURATIONS[index];
+        beep(index === MINUTES.length - 1);
+        index += 1;
+      }
+      if (index >= MINUTES.length) {
+        finish();
+        return;
+      }
+      remaining = DURATIONS[index] - overdueMs;
+      endsAt = Date.now() + remaining;
+    }
+
+    function tick() {
+      if (!running) return;
+      remaining = endsAt - Date.now();
+      if (remaining <= 0) advancePast(-remaining);
+      render();
+    }
+
+    async function start() {
+      if (index >= MINUTES.length) return;
+      ensureAudio();
+      running = true;
+      endsAt = Date.now() + remaining;
+      await lockScreen();
+      clearInterval(timerId);
+      timerId = setInterval(tick, 200);
+      tick();
+    }
+
+    function pause() {
+      if (running) remaining = Math.max(0, endsAt - Date.now());
+      running = false;
+      clearInterval(timerId);
+      unlockScreen();
+      render();
+    }
+
+    function reset() {
+      pause();
+      index = 0;
+      remaining = DURATIONS[0];
+      render();
+    }
+
+    startBtn.addEventListener("click", start);
+    pauseBtn.addEventListener("click", pause);
+    resetBtn.addEventListener("click", reset);
+    testSoundBtn.addEventListener("click", () => {
+      ensureAudio();
+      beep(false);
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && running) {
+        tick();
+        lockScreen();
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
